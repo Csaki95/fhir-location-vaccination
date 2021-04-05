@@ -1,0 +1,11 @@
+@use "src/styles";
+
+.login-page{
+    background-color: styles.$body-color;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}

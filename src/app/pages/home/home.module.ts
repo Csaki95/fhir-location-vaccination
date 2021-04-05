@@ -18,3 +18,4 @@ import { NavbarModule } from 'src/app/components/navbar/navbar.module';
   ]
 })
 export class HomeModule { }
+  

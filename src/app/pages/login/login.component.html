@@ -1,8 +1,24 @@
 <div class="login-page">
     <div class="login-page-left">
-        <p>Valami</p>
+        <h1>Vaccination Locations</h1>
+        <p>Angular Firebase app based on FHIR-Location</p>
     </div>
     <div class="login-page-rigth">
-        
+        <mat-card>
+            <mat-card-content>
+                <form #form="ngForm" class="login-form">
+                    <input type="text" name="email" ngModel placeholder="Email address" required>
+                    <input type="password" name="password" ngModel placeholder="Password" required>
+                    <button type="submit" 
+                            class="login-button" 
+                            [disabled]="form.invalid || form.pending">
+                            Login
+                    </button>
+                </form>
+                <a href="#">Forgotten account?</a>
+                <button class="create-account" (click)="openRegistration">Create new account</button>
+            </mat-card-content>
+        </mat-card>
     </div>
+    <app-footer></app-footer>
 </div>

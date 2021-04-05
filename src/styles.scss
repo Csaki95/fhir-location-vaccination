@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+    box-sizing: border-box;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$primary-button-color: #1c7eff;
+$success-button-color: #3eac29;
+
+$header-color: white;
+$body-color: #e8eaec;

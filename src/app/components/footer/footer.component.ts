@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faAngular, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +7,10 @@ import { faAngular, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-ic
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  angularIcon = faAngular;
   linkedinIcon = faLinkedin;
   gitIcon = faGithub;
+  linkedin= "https://www.linkedin.com/in/gergo-csaki-60b838145";
+  github = "https://github.com/Csaki95/fhir-location-vaccination.git";
 
 
   constructor() { }

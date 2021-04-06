@@ -1,27 +1,28 @@
 <div class="login-page">
     <app-background></app-background>
-    <div class="login-container centering">
-        <div class="login-page-left">
-            <h1>Vaccination Locations</h1>
-            <p>Angular Firebase app based on FHIR-Location</p>
-        </div>
-        <div class="login-page-rigth">
-            <mat-card class="login-container centering">
-                <mat-card-content>
-                    <form #form="ngForm" class="login-form">
-                        <input type="text" name="email" ngModel placeholder="Email address" required>
-                        <input type="password" name="password" ngModel placeholder="Password" required>
-                        <button type="submit" 
-                                class="login-button" 
-                                [disabled]="form.invalid || form.pending">
-                                Login
-                        </button>
-                    </form>
+    <div class="centering">
+        <mat-card class="login-container">
+            <mat-card-content>
+                <div class="title">
+                    <fa-icon [icon]="angularIcon"></fa-icon>
+                    <h1>Vaccination Locations</h1>
+                    <p>Angular Firebase app based on FHIR-Location</p>
+                </div>
+                <form #form="ngForm" class="login-form">
+                    <input type="text" matInput name="email" ngModel placeholder="Email address" required>
+                    <input type="password" matInput name="password" ngModel placeholder="Password" required>
+                    <button type="submit" 
+                            class="login-button" 
+                            [disabled]="form.invalid || form.pending">
+                            Login
+                    </button>
+                </form>
+                <div class="sub-login">
                     <a href="#">Forgotten account?</a>
                     <button class="create-account" (click)="openRegistration">Create new account</button>
-                </mat-card-content>
-            </mat-card>
-        </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
     </div>
     <app-footer></app-footer>
 </div>

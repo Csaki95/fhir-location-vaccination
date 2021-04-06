@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fhir-location-1daf4": {
+      "hosting": {
+        "fhir-location-vaccination": [
+          "fhir-location-1daf4"
+        ]
+      }
+    }
+  }
+}

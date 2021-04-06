@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { faAngular } from '@fortawesome/free-brands-svg-icons';
+
 
 @Component({
   selector: 'app-login',
@@ -7,6 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  angularIcon = faAngular;
 
   constructor() { }
 

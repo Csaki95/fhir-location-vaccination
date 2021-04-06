@@ -1,8 +1,12 @@
 <footer class="footer-container">
     <div class="footer-contact centering">
         <h3 class="footer-contact-text">Contact me:</h3>
-        <fa-icon class="footer-icon centering" [icon]="linkedinIcon"></fa-icon>
-        <fa-icon class="footer-icon centering" [icon]="gitIcon"></fa-icon>
+        <a [href]="github">       
+            <fa-icon class="footer-icon centering" [icon]="gitIcon"></fa-icon>
+        </a>
+        <a [href]="linkedin">       
+            <fa-icon class="footer-icon centering" [icon]="linkedinIcon"></fa-icon>
+        </a>
     </div>
     <div class="footer-info centering">
         <span class="info">@Csáki Gergő 2021</span>

@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { MatCardModule } from '@angular/material/card';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/background/background.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 
@@ -17,7 +18,8 @@ import { BackgroundModule } from 'src/app/components/background/background.modul
     MatCardModule,
     FormsModule,
     FooterModule,
-    BackgroundModule
+    BackgroundModule,
+    FontAwesomeModule
   ],
   exports: [ LoginComponent ]
 })

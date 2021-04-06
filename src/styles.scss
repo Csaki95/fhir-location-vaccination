@@ -7,8 +7,24 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+.centering {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: stretch;
+}
+
 $primary-button-color: #1c7eff;
 $success-button-color: #3eac29;
 
+$text-light: #fafafa;
+$text-light-hover: #dddddd;
+$text-dark: #0c0c0c;
+
 $header-color: white;
 $body-color: #e8eaec;
+
+$top-footer-color: #4998ff;
+$bottom-footer-color: #1c7eff;
+
+$on-hover: #4691f3;

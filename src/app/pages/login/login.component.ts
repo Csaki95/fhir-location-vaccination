@@ -10,6 +10,7 @@ import { faAngular } from '@fortawesome/free-brands-svg-icons';
 })
 export class LoginComponent implements OnInit {
   angularIcon = faAngular;
+  isRegistration = false;
 
   constructor() { }
 
@@ -17,11 +18,15 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm): void {
-
+    
   }
 
   openRegistration(): void{
-    
+    this.isRegistration = true;
+  }
+
+  closeRegistration(): void{
+    this.isRegistration = false;
   }
 
 }

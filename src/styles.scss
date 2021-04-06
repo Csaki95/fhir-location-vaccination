@@ -1,5 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 
+$primary-button-color: #1c7eff;
+$primary-button-hover: #4998ff;
+$success-button-color: #3eac29;
+
+$text-light: #fafafa;
+$text-light-hover: #dddddd;
+$text-dark: #0c0c0c;
+
+$header-color: white;
+$body-color: #eff0f1;
+
+$top-footer-color: #4998ff;
+$bottom-footer-color: #1c7eff;
+
+$on-hover: #4691f3;
+
 *{
     box-sizing: border-box;
 }
@@ -14,17 +30,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: stretch;
 }
 
-$primary-button-color: #1c7eff;
-$success-button-color: #3eac29;
+.no-decor{
+    text-decoration: none;
+}
 
-$text-light: #fafafa;
-$text-light-hover: #dddddd;
-$text-dark: #0c0c0c;
+.full-width{
+    width: 100%;
+}
 
-$header-color: white;
-$body-color: #e8eaec;
+.vertical-spacing{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
 
-$top-footer-color: #4998ff;
-$bottom-footer-color: #1c7eff;
-
-$on-hover: #4691f3;
+.mat-flat-button{
+    color: $primary-button-color;
+    background-color: $body-color;
+    font-size: 1rem;
+    padding: 0.25rem;
+}

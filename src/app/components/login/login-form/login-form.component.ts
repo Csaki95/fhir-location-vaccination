@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 
 
@@ -7,14 +8,10 @@ import { faAngular } from '@fortawesome/free-brands-svg-icons';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent {
   angularIcon = faAngular;
-  regClicked: boolean = false;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
   @Output() openRegistrationComp = new EventEmitter<boolean>();
 
@@ -22,7 +19,7 @@ export class LoginFormComponent implements OnInit {
     this.openRegistrationComp.emit(true);
   }
 
-  onSignIn(email: string, password: string){
+  onSignIn(form: NgForm){
     
   }
 }

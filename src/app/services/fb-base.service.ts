@@ -5,14 +5,15 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 
+// Authorization service
 export class FbBaseService {
   isLoggedIn: boolean = false;
 
-  constructor(private afs: AngularFireAuth) { }
+  constructor(private angularFireAuth: AngularFireAuth) { }
 
   // Login functions
   async signin(email: string, password: string){
-    await this.afs.signInWithEmailAndPassword(email, password)
+    await this.angularFireAuth.signInWithEmailAndPassword(email, password)
     .then(res=> {
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user));
@@ -20,7 +21,7 @@ export class FbBaseService {
   }
 
   async signup(email: string, password: string){
-    await this.afs.createUserWithEmailAndPassword(email, password)
+    await this.angularFireAuth.createUserWithEmailAndPassword(email, password)
     .then(res=> {
       this.isLoggedIn = true;
       localStorage.setItem('user', JSON.stringify(res.user));
@@ -28,7 +29,7 @@ export class FbBaseService {
   }
 
   logout(){
-    this.afs.signOut();
+    this.angularFireAuth.signOut();
     localStorage.removeItem('user');
   }
 }

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register-form',
@@ -18,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
     this.openRegistrationComp.emit(false);
   }
 
-  onSignUp(email: string, password: string){
+  onSignUp(form: NgForm){
     
   }
 }

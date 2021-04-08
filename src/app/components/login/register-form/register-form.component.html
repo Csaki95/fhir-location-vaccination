@@ -1,0 +1,26 @@
+<mat-card class="container">
+    <mat-card-header class="header centering">
+        <mat-card-title class="title">Registration</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form #form="ngForm" class="login-form">
+            <mat-form-field class="full-width">
+                <input matInput type="text"s #email ngModel name="email" placeholder="Email address" required>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="password" #password ngModel name="password" placeholder="Password" required>
+            </mat-form-field>
+            <button mat-flat-button type="submit" 
+                    class="full-width button vertical-spacing" 
+                    (click)="onSignUp(email.value, password.value)"
+                    [disabled]="form.invalid || form.pending">
+                    Register
+            </button>
+        </form>
+        <div class="sub-login vertical-spacing">
+            <div class="centering">
+                <button mat-button class="create-account centering" (click)="closeRegistrationForm()">Back</button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

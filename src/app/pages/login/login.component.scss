@@ -4,27 +4,27 @@
     background-color: styles.$body-color;
     height: 100vh;
     width: 100vw;
+}
 
-    .login-container{
-        width: 30rem;
+.container{
+    width: 30rem;
+    margin: 1rem;
+    border-color: styles.$on-hover;
+
+    .header{
         margin: 1rem;
-        border-color: styles.$on-hover;
 
-        .header{
-            margin: 0.5rem;
+        .icon{
+            font-size: 1.5rem;
+            color: red;
+        }
 
-            .icon{
-                font-size: 1.5rem;
-                color: red;
-            }
+        .title{
+            font-size: 1rem;
+        }
 
-            .title{
-                font-size: 1rem;
-            }
-
-            .subtitle{
-                font-size: 0.75rem;
-            }
+        .subtitle{
+            font-size: 0.75rem;
         }
     }
 }

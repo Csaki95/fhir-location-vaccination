@@ -1,61 +1,8 @@
 <div class="login-page">
     <app-background></app-background>
     <div class="centering">
-        <mat-card class="login-container" *ngIf="!isRegistration">
-            <mat-card-header class="header centering">
-                <fa-icon class="icon" matCardAvatar [icon]="angularIcon"></fa-icon>
-                <mat-card-title class="title">Vaccination Locations</mat-card-title>
-                <mat-card-subtitle class="subtitle">Angular Firebase app based on <span style="white-space: nowrap;">FHIR-Location</span></mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <form #form="ngForm" class="login-form">
-                    <mat-form-field class="full-width">
-                        <input matInput type="text" matInput name="email" ngModel placeholder="Email address" required>
-                    </mat-form-field>
-                    <mat-form-field class="full-width">
-                        <input matInput type="password" matInput name="password" ngModel placeholder="Password" required>
-                    </mat-form-field>
-                    <button mat-flat-button type="submit" 
-                            class="full-width button vertical-spacing" 
-                            [disabled]="form.invalid || form.pending">
-                            Login
-                    </button>
-                </form>
-                <div class="sub-login vertical-spacing">
-                    <div class="centering">
-                        <a class="full-width no-decor centering" href="#">Forgotten account?</a>
-                    </div>
-                    <div class="centering">
-                        <button mat-button class="create-account centering" (click)="openRegistration()">Create new account</button>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-        <mat-card class="login-container" *ngIf="isRegistration">
-            <mat-card-header class="header centering">
-                <mat-card-title class="title">Registration form</mat-card-title>
-            </mat-card-header>
-            <mat-card-content>
-                <form #form="ngForm" class="login-form">
-                    <mat-form-field class="full-width">
-                        <input matInput type="text" matInput name="email" ngModel placeholder="Email address" required>
-                    </mat-form-field>
-                    <mat-form-field class="full-width">
-                        <input matInput type="password" matInput name="password" ngModel placeholder="Password" required>
-                    </mat-form-field>
-                    <button mat-flat-button type="submit" 
-                            class="full-width button vertical-spacing" 
-                            [disabled]="form.invalid || form.pending">
-                            Register
-                    </button>
-                </form>
-                <div class="sub-login vertical-spacing">
-                    <div class="centering">
-                        <button mat-button class="create-account centering" (click)="closeRegistration()">Back</button>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
+        <app-login-form *ngIf="!isRegistration" (openRegistrationComp)="openRegistration($event)"></app-login-form>
+        <app-register-form *ngIf="isRegistration" (openRegistrationComp)="openRegistration($event)"></app-register-form>
     </div>
     <app-footer></app-footer>
 </div>

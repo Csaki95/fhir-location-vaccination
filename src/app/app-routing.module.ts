@@ -6,11 +6,20 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
   {
-    path: '',
+    path: 'register',
+    component: LoginComponent
+  },
+  {
+    path: 'home',
     component: HomeComponent,
     canActivate: [VaccineGuard]
   }
@@ -20,4 +29,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

@@ -1,8 +1,0 @@
-<div class="login-page">
-    <app-background></app-background>
-    <div class="centering">
-        <app-login-form *ngIf="!isRegistration" (openRegistrationComp)="openRegistration($event)"></app-login-form>
-        <app-register-form *ngIf="isRegistration" (openRegistrationComp)="openRegistration($event)"></app-register-form>
-    </div>
-    <app-footer></app-footer>
-</div>

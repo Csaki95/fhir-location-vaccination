@@ -1,0 +1,39 @@
+<div class="login-page">
+    <app-background></app-background>
+    <div class="centering">
+        <mat-card class="container">
+            <mat-card-header class="header centering">
+                <fa-icon class="icon" matCardAvatar [icon]="angularIcon"></fa-icon>
+                <mat-card-title class="title">Vaccination Locations</mat-card-title>
+                <mat-card-subtitle class="subtitle">Angular Firebase app based on <span style="white-space: nowrap;">FHIR-Location</span></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-header class="centering" *ngIf="authError">
+                <mat-card-subtitle class="error centering">{{ authError?.message }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <form #form="ngForm" (ngSubmit)="onSignIn(form)" class="login-form">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" ngModel name="email" placeholder="Email address" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <input matInput type="password" ngModel name="password" placeholder="Password" minlength=6 maxlength=100 required>
+                    </mat-form-field>
+                    <button mat-flat-button type="submit" 
+                            class="full-width button vertical-spacing" 
+                            [disabled]="form.invalid || form.pending">
+                            Login
+                    </button>
+                </form>
+                <div class="sub-login vertical-spacing">
+                    <div class="centering">
+                        <a class="full-width no-decor centering" href="#">Forgotten account?</a>
+                    </div>
+                    <div class="centering">
+                        <button mat-button class="create-account centering" (click)="clearErr()" [routerLink]="['/register']" routerLinkActive="router-link-active" >Create new account</button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <app-footer></app-footer>
+</div>

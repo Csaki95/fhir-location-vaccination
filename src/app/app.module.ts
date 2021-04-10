@@ -7,12 +7,13 @@ import { HomeModule } from './pages/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { FormsModule } from '@angular/forms';
-import { LoginModule } from './pages/login/login.module';
+import { LoginModule } from './auth/login/login.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
+import { RegistrationModule } from './auth/registration/registration.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { environment } from 'src/environments/environment';
     AngularFireAuthModule,
     HomeModule,
     LoginModule,
+    RegistrationModule,
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,

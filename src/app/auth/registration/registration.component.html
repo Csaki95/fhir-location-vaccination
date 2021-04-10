@@ -1,0 +1,34 @@
+<div class="login-page">
+    <app-background></app-background>
+    <div class="centering">
+        <mat-card class="container">
+            <mat-card-header class="header centering">
+                <mat-card-title class="title centering">Registration</mat-card-title>
+            </mat-card-header>
+            <mat-card-header class="centering" *ngIf="authError">
+                <mat-card-subtitle class="error centering">{{ authError?.message }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <form #form="ngForm" (ngSubmit)="onSignUp(form)" class="login-form">
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" ngModel name="email" placeholder="Email address" required>
+                    </mat-form-field>
+                    <mat-form-field class="full-width" hintLabel="Minimum 6 characters">
+                        <input matInput type="password" ngModel name="password" placeholder="Password" minlength=6 maxlength=100 required>
+                    </mat-form-field>
+                    <button mat-flat-button type="submit" 
+                            class="full-width button vertical-spacing" 
+                            [disabled]="form.invalid || form.pending">
+                            Register
+                    </button>
+                </form>
+                <div class="sub-login vertical-spacing">
+                    <div class="centering">
+                        <button mat-button class="create-account centering" (click)="clearErr()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Back</button>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <app-footer></app-footer>
+</div>

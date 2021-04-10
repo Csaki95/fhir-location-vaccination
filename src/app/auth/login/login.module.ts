@@ -6,8 +6,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { LoginFormModule } from 'src/app/components/login/login-form/login-form.module';
-import { RegisterFormModule } from 'src/app/components/login/register-form/register-form.module';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -20,8 +19,7 @@ import { RegisterFormModule } from 'src/app/components/login/register-form/regis
     FooterModule,
     BackgroundModule,
     FontAwesomeModule,
-    LoginFormModule,
-    RegisterFormModule
+    RouterModule
   ],
   exports: [ LoginComponent ]
 })

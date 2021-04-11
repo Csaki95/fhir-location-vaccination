@@ -44,9 +44,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     margin-bottom: 1rem;
 }
 
+.horizontal-spacing{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 .mat-flat-button{
     color: $primary-button-color;
     background-color: $body-color;
     font-size: 1rem;
     padding: 0.25rem;
+}
+
+.angular-icon{
+    font-size: 1.5rem;
+    color: red;
+}
+
+.mat-button-focus-overlay {
+    background-color: transparent!important;
 }

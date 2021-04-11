@@ -14,10 +14,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { RegistrationModule } from './auth/registration/registration.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LogoutDialog } from './components/common/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LogoutDialog
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { RegistrationModule } from './auth/registration/registration.module';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

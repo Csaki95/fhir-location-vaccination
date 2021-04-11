@@ -3,7 +3,7 @@
     <div class="centering">
         <mat-card class="container">
             <mat-card-header class="header centering">
-                <fa-icon class="icon" matCardAvatar [icon]="angularIcon"></fa-icon>
+                <fa-icon class="angular-icon" matCardAvatar [icon]="angularIcon"></fa-icon>
                 <mat-card-title class="title">Vaccination Locations</mat-card-title>
                 <mat-card-subtitle class="subtitle">Angular Firebase app based on <span style="white-space: nowrap;">FHIR-Location</span></mat-card-subtitle>
             </mat-card-header>
@@ -25,9 +25,6 @@
                     </button>
                 </form>
                 <div class="sub-login vertical-spacing">
-                    <div class="centering">
-                        <a class="full-width no-decor centering" href="#">Forgotten account?</a>
-                    </div>
                     <div class="centering">
                         <button mat-button class="create-account centering" (click)="clearErr()" [routerLink]="['/register']" routerLinkActive="router-link-active" >Create new account</button>
                     </div>

@@ -1,2 +1,7 @@
-<app-navbar></app-navbar>
-<p>Home works!</p>
+<app-navbar [isMobile] = "isMobile" (addNewItem) = "openAddPage()"></app-navbar>
+<app-background *ngIf="isMobile"></app-background> 
+<div [ngClass]="isMobile ? 'bottom' : 'top'" class="home-container">
+    <div>
+
+    </div>
+</div>

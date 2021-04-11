@@ -57,4 +57,13 @@ export class AuthService {
         this.eventAuthError.next(error);
       })
   }
+
+  /**
+   * Navigate out to login page THEN
+   * sign the user out
+   */
+  logOut(){
+    this.router.navigate(['/login']);
+    this.afAuth.signOut();
+  }
 }

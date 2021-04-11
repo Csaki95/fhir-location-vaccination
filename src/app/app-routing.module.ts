@@ -7,6 +7,10 @@ import { RegistrationComponent } from './auth/registration/registration.componen
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
+/**
+ * Using Angular FireAuth built in guard
+ *  if not logged in go to login page
+ */
 const routes: Routes = [
   {
     path: 'login',

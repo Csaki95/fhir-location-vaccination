@@ -1,1 +1,32 @@
-<p>Valami</p>
+<mat-toolbar  [ngClass]="isMobile ? 'bottom' : 'top'" class="navbar-container">
+    <mat-toolbar-row class="bottom-button-row centering" *ngIf="isOpen && isMobile"> 
+        <button mat-button fxLayout="row" class="bottom-button" (click)="addNew()">
+            Add new
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="bottom-button-row centering" *ngIf="isOpen && isMobile">
+        <button mat-button fxLayout="row" class="bottom-button" (click)="logOut()">
+            Logout
+        </button>
+    </mat-toolbar-row>   
+    <mat-toolbar-row>
+        <div class="centering">
+            <fa-icon class="angular-icon horizontal-spacing centering" [icon]="angularIcon"></fa-icon>
+            <h2 class="navbar-title">FHIR-Location</h2>
+        </div>
+        <span class="navbar-spacer"></span>
+        <button mat-button class="menu-button" *ngIf="isMobile" (click)="openMenu()">
+            <fa-icon class="horizontal-spacing centering" [icon]="menuIcon"></fa-icon>
+        </button>
+        <div *ngIf="!isMobile">
+            <button mat-button class="top-button" (click)="addNew()">
+                <fa-icon [icon]="addIcon"></fa-icon>
+                Add new
+            </button>
+            <button mat-button class="top-button" (click)="logOut()">
+                <fa-icon [icon]="signOutIcon"></fa-icon>
+                Logout
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

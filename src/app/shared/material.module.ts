@@ -6,7 +6,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu'
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+
 
 const modules: any[] = [
   MatCardModule,
@@ -15,7 +19,9 @@ const modules: any[] = [
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-  MatMenuModule
+  MatMenuModule,
+  MatRadioModule,
+  MatButtonToggleModule
 ]
 
 @NgModule({

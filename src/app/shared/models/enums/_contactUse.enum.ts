@@ -1,7 +1,7 @@
 export enum ContactUse {
-    Home = 'home',
-    Work = 'work',
-    Temp = 'temp',
-    Old = 'old',
-    Mobile = 'mobile'
+    home = 'Home',
+    work = 'Work',
+    temp = 'Temp',
+    old = 'Old',
+    mobile = 'Mobile'
 }

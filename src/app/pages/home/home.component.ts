@@ -1,5 +1,6 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   isMobile: boolean = false;
 
-  constructor(public breakpointObserver: BreakpointObserver) { }
+  constructor(public breakpointObserver: BreakpointObserver,
+              private router: Router) { }
 
   /**
    * Subscribe to breakpointObserver
@@ -28,6 +30,6 @@ export class HomeComponent implements OnInit {
   }
 
   openAddPage(){
-    console.log("add new item")
+    this.router.navigate(['/add']);
   }
 }

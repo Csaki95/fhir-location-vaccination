@@ -1,8 +1,8 @@
 export enum OperationalStatus {
-    Closed = 'C',
-    Housekeeping = 'H',
-    Isolated = 'I',
-    Contaminated = 'C',
-    Occupied = 'O',
-    Unoccupied = 'U'
+    C = 'Closed',
+    H = 'Housekeeping',
+    I = 'Isolated',
+    K = 'Contaminated',
+    O = 'Occupied',
+    U = 'Unoccupied'
 }

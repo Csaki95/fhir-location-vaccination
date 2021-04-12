@@ -15,7 +15,7 @@ name - az előírás helyett kötelezővé tettem
     név nélkül még listázni se lehet (értelme sincs), így legalább ennyit módosítottam rajta
 */
 export interface Location {
-    id: string,
+    id?: string,
     status?: Status,
     operationalStatus?: OperationalStatus,
     name: string,

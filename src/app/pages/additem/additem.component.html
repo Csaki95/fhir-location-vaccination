@@ -1,0 +1,34 @@
+<div class="add-page">
+    <app-background></app-background> 
+    <div class="centering">
+        <mat-card class="container">
+            <mat-card-header class="header centering">
+                <fa-icon class="angular-icon" matCardAvatar [icon]="angularIcon"></fa-icon>
+                <mat-card-title class="title">Add new Vaccination Locations</mat-card-title>
+            </mat-card-header>
+            <mat-card-header class="centering">
+                <mat-card-subtitle class="error centering"></mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <form #form="ngForm" class="add-form">
+                    <app-statusform (statusEmitter)="setStatus($event)"></app-statusform>
+                    <mat-form-field class="full-width spacer">
+                        <input matInput type="text" ngModel name="name" placeholder="Location Name" required>
+                    </mat-form-field>
+                    <div class="centering">
+                        <button mat-flat-button type="button" 
+                            class="add-button vertical-spacing">
+                            Cancel
+                        </button>
+                        <span class="form-spacer"></span>
+                        <button mat-flat-button type="submit" 
+                                class="add-button vertical-spacing" 
+                                [disabled]="form.invalid || form.pending">
+                                Submit
+                        </button>
+                    </div>                    
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

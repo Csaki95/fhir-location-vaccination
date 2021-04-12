@@ -1,9 +1,9 @@
 export enum ContactSystem {
-    Phone = 'phone',
-    Fax = 'fax',
-    Email = 'email',
-    Pager = 'pager',
-    URL = 'url',
-    SMS = 'sms',
-    Other = 'other'
+    phone = 'Phone',
+    fax = 'Fax',
+    email = 'Email',
+    pager = 'Pager',
+    url = 'URL',
+    sms = 'SMS',
+    other = 'Other'
 }

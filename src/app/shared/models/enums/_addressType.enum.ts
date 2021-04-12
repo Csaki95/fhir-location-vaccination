@@ -1,5 +1,5 @@
 export enum AddressType {
-    Postal = 'postal',
-    Physical = 'physical',
-    Both = 'both'
+    postal = 'Postal',
+    physical = 'Physical',
+    both = 'Both'
 }

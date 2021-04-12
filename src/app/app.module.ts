@@ -16,6 +16,7 @@ import { environment } from 'src/environments/environment';
 import { RegistrationModule } from './auth/registration/registration.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LogoutDialog } from './components/common/navbar/navbar.component';
+import { AdditemModule } from './pages/additem/additem.module';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LogoutDialog } from './components/common/navbar/navbar.component';
     MaterialModule,
     FormsModule,
     FontAwesomeModule,
-    MatDialogModule
+    MatDialogModule,
+    AdditemModule
   ],
   providers: [],
   bootstrap: [AppComponent]

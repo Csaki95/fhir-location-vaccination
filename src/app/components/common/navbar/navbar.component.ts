@@ -2,8 +2,8 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { faPlus, faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/auth/auth.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -35,34 +35,12 @@ export class NavbarComponent implements OnInit {
   }
 
   logOut(){
-    const dialogRef = this.dialog.open(LogoutDialog, {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px'
     });
   }
 
   addNew(){
     this.addNewItem.emit();
-  }
-}
-
-/**
- * Helper component for confirming logout
- */
-@Component({
-  selector: 'logoutDialog',
-  templateUrl: 'logOutDialog.html',
-  styleUrls: ['./navbar.component.scss']
-})
-export class LogoutDialog {
-  constructor(public dialogRef: MatDialogRef<LogoutDialog>,
-              private auth: AuthService){}
-
-  onYesClick(): void{
-    this.dialogRef.close();
-    this.auth.logOut();
-  }
-
-  onNoClick(): void{
-    this.dialogRef.close();
   }
 }

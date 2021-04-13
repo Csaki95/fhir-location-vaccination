@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { EnumpipePipe } from './pipes/enumpipe.pipe'
 
 
 
@@ -21,11 +23,14 @@ const modules: any[] = [
   MatListModule,
   MatMenuModule,
   MatRadioModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatSelectModule
 ]
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    EnumpipePipe
+  ],
   imports: [
     CommonModule,
     ...modules

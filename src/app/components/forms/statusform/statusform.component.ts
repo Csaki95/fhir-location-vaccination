@@ -21,4 +21,9 @@ export class StatusformComponent implements OnInit {
     this.statusEmitter.emit(value);
   }
 
+  keys(): Array<string> {
+    var keys = Object.keys(this.Status);
+    return keys.slice(keys.length / 2);
+  }
+
 }

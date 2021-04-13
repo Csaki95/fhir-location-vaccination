@@ -15,13 +15,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { RegistrationModule } from './auth/registration/registration.module';
 import { MatDialogModule } from '@angular/material/dialog';
-import { LogoutDialog } from './components/common/navbar/navbar.component';
 import { AdditemModule } from './pages/additem/additem.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    LogoutDialog
+    AppComponent
   ],
   imports: [
     BrowserModule,

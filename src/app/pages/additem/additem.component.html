@@ -4,7 +4,7 @@
         <mat-card class="container">
             <mat-card-header class="header centering">
                 <fa-icon class="angular-icon" matCardAvatar [icon]="angularIcon"></fa-icon>
-                <mat-card-title class="title">Add new Vaccination Locations</mat-card-title>
+                <mat-card-title class="title">Add new</mat-card-title>
             </mat-card-header>
             <mat-card-header class="centering">
                 <mat-card-subtitle class="error centering"></mat-card-subtitle>
@@ -12,6 +12,7 @@
             <mat-card-content>
                 <form #form="ngForm" class="add-form">
                     <app-statusform (statusEmitter)="setStatus($event)"></app-statusform>
+                    <app-operational-statusform></app-operational-statusform>
                     <mat-form-field class="full-width spacer">
                         <input matInput type="text" ngModel name="name" placeholder="Location Name" required>
                     </mat-form-field>

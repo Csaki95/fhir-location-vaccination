@@ -7,13 +7,15 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StatusformComponent } from 'src/app/components/forms/statusform/statusform.component';
+import { OperationalStatusformComponent } from 'src/app/components/forms/operational-statusform/operational-statusform.component';
 
 
 
 @NgModule({
   declarations: [
     AdditemComponent,
-    StatusformComponent
+    StatusformComponent,
+    OperationalStatusformComponent
   ],
   imports: [
     CommonModule,

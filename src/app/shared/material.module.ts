@@ -10,7 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
-import { EnumpipePipe } from './pipes/enumpipe.pipe'
 
 
 
@@ -29,7 +28,6 @@ const modules: any[] = [
 
 @NgModule({
   declarations: [
-    EnumpipePipe
   ],
   imports: [
     CommonModule,

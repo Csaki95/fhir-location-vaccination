@@ -35,9 +35,9 @@ import { AdditemModule } from './pages/additem/additem.module';
     FormsModule,
     FontAwesomeModule,
     MatDialogModule,
-    AdditemModule
+    AdditemModule    
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

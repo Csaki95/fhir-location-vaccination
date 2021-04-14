@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusformComponent } from './statusform.component';
+import { ToggleButtonComponent } from './togglebutton.component';
 
 describe('StatusformComponent', () => {
-  let component: StatusformComponent;
-  let fixture: ComponentFixture<StatusformComponent>;
+  let component: ToggleButtonComponent;
+  let fixture: ComponentFixture<ToggleButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ StatusformComponent ]
+      declarations: [ ToggleButtonComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StatusformComponent);
+    fixture = TestBed.createComponent(ToggleButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -11,12 +11,15 @@ import { Status } from 'src/app/shared/models/enums/_status.enum';
 export class AdditemComponent implements OnInit {
   angularIcon = faAngular;
 
+  Status = Status;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   setStatus(value: Status){
-    console.log(value);
+    var status: Status = (<any>Status)[value];
+    console.log(status);
   }
 }

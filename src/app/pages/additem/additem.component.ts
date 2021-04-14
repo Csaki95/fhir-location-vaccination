@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
+import { OperationalStatus } from 'src/app/shared/models/enums/_operational-status.enum';
 import { Status } from 'src/app/shared/models/enums/_status.enum';
 
 
@@ -11,15 +12,22 @@ import { Status } from 'src/app/shared/models/enums/_status.enum';
 export class AdditemComponent implements OnInit {
   angularIcon = faAngular;
 
+  // Typedefs
   Status = Status;
+  OperationalStatus = OperationalStatus;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  setStatus(value: Status){
-    var status: Status = (<any>Status)[value];
+  setStatus(value: string){
+    let status: Status = value as Status;
     console.log(status);
+  }
+
+  setOperationalStatus(value: string){
+    let opStatus: OperationalStatus = value as OperationalStatus;
+    console.log(opStatus);
   }
 }

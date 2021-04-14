@@ -4,16 +4,18 @@ import { AdditemComponent } from './additem.component';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from 'src/app/shared/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToggleButtonComponent } from 'src/app/components/forms/togglebutton/togglebutton.component';
+import { AutocompleteComponent } from 'src/app/components/forms/autocomplete/autocomplete.component';
 
 
 
 @NgModule({
   declarations: [
     AdditemComponent,
-    ToggleButtonComponent
+    ToggleButtonComponent,
+    AutocompleteComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { ToggleButtonComponent } from 'src/app/components/forms/togglebutton/tog
     FontAwesomeModule,
     MaterialModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     AdditemComponent

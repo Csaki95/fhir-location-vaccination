@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -23,7 +24,8 @@ const modules: any[] = [
   MatMenuModule,
   MatRadioModule,
   MatButtonToggleModule,
-  MatSelectModule
+  MatSelectModule,
+  MatAutocompleteModule
 ]
 
 @NgModule({

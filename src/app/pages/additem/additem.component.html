@@ -11,7 +11,8 @@
             </mat-card-header>
             <mat-card-content>
                 <form #form="ngForm" class="add-form">
-                    <app-togglebutton [title]="'Location status:'" [enum]="Status" (statusEmitter)="setStatus($event)"></app-togglebutton>
+                    <app-togglebutton [title]="'Location status:'" [enum]="Status" (valueEmitter)="setStatus($event)"></app-togglebutton>
+                    <app-autocomplete [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (valueEmitter)="setOperationalStatus($event)"></app-autocomplete>
                     <mat-form-field class="full-width spacer">
                         <input matInput type="text" ngModel name="name" placeholder="Location Name" required>
                     </mat-form-field>

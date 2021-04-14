@@ -1,0 +1,16 @@
+<form class="container">
+    <mat-form-field class="autocomplete-form">
+        <mat-label>{{title}}</mat-label>
+        <input type="text"
+            [placeholder]="subtext"
+            attr.aria-label="{{title}}"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onValueChange($event)">
+            <mat-option *ngFor="let item of enum | keyvalue" [value]="item.value" [id]="item.key">
+                {{item.value}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

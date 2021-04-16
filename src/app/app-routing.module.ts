@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './auth/login/login.component';
-import { RegistrationComponent } from './auth/registration/registration.component';
-import { AdditemComponent } from './pages/additem/additem.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -14,34 +10,39 @@ const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
  */
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: async () => (await import('./auth/login/login.module')).LoginModule
   },
   {
     path: 'register',
-    component: RegistrationComponent
+    loadChildren: async () => (await import('./auth/registration/registration.module')).RegistrationModule,
   },
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: async () => (await import('./pages/home/home.module')).HomeModule,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
     path: 'add',
-    component: AdditemComponent,
+    loadChildren: async () => (await import('./pages/additem/additem.module')).AdditemModule,
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
-    path: '',
-    redirectTo: '/home',
+    path: '**',
+    redirectTo: 'home',
     pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 

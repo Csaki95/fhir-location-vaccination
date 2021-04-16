@@ -30,4 +30,16 @@ export class AdditemComponent implements OnInit {
     let opStatus: OperationalStatus = value as OperationalStatus;
     console.log(opStatus);
   }
+
+  setName(value: string){
+    console.log(value);
+  }
+
+  setDescription(value: string){
+    console.log(value);
+  }
+  
+  setAlias(value: string[]){
+    console.log(value);
+  }
 }

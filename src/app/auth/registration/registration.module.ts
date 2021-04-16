@@ -6,7 +6,14 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
 import { RegistrationComponent } from './registration.component';
 import { RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
+export const routes: Routes = [
+  {
+    path: '',
+    component: RegistrationComponent
+  }
+]
 
 
 @NgModule({
@@ -19,7 +26,7 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     FooterModule,
     BackgroundModule,
-    RouterModule
+    RouterModule.forChild(routes)
   ],
   exports: [
     RegistrationComponent

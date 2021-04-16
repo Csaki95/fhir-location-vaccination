@@ -7,8 +7,14 @@ import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
-
+export const routes: Routes = [
+  { 
+    path: '',
+    component: LoginComponent
+  }
+]
 
 @NgModule({
   declarations: [ LoginComponent ],
@@ -19,7 +25,7 @@ import { RouterModule } from '@angular/router';
     FooterModule,
     BackgroundModule,
     FontAwesomeModule,
-    RouterModule
+    RouterModule.forChild(routes)
   ],
   exports: [ LoginComponent ]
 })

@@ -13,13 +13,14 @@
                 <form #form="ngForm" class="add-form">
                     <app-togglebutton [title]="'Location status:'" [enum]="Status" (valueEmitter)="setStatus($event)"></app-togglebutton>
                     <app-autocomplete [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (valueEmitter)="setOperationalStatus($event)"></app-autocomplete>
-                    <mat-form-field class="full-width spacer">
-                        <input matInput type="text" ngModel name="name" placeholder="Location Name" required>
-                    </mat-form-field>
+                    <app-text [title]="'Name'" [subtext]="'Name of the facility'" [isRequired]="true" (valueEmitter)="setName($event)"></app-text>
+                    <app-multiline-text [title]="'Alias'"></app-multiline-text>
+                    <app-text [title]="'Description'" [subtext]="'Description of the facility'" (valueEmitter)="setDescription($event)"></app-text>
                     <div class="centering">
                         <button mat-flat-button type="button" 
-                            class="add-button vertical-spacing">
-                            Cancel
+                                class="add-button vertical-spacing"
+                                routerLink="/home">
+                                Cancel
                         </button>
                         <span class="form-spacer"></span>
                         <button mat-flat-button type="submit" 

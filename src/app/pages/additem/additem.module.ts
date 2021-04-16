@@ -8,14 +8,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToggleButtonComponent } from 'src/app/components/forms/togglebutton/togglebutton.component';
 import { AutocompleteComponent } from 'src/app/components/forms/autocomplete/autocomplete.component';
+import { Routes } from '@angular/router';
+import { MultilineTextComponent } from 'src/app/components/forms/multiline-text/multiline-text.component';
+import { TextComponent } from 'src/app/components/forms/text/text.component';
 
+export const routes: Routes = [
+  {
+    path: '',
+    component: AdditemComponent
+  }
+]
 
 
 @NgModule({
   declarations: [
     AdditemComponent,
     ToggleButtonComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    TextComponent,
+    MultilineTextComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +34,7 @@ import { AutocompleteComponent } from 'src/app/components/forms/autocomplete/aut
     FontAwesomeModule,
     MaterialModule,
     FormsModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     ReactiveFormsModule
   ],
   exports: [

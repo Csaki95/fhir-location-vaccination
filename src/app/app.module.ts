@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { LoginModule } from './auth/login/login.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireModule } from '@angular/fire';

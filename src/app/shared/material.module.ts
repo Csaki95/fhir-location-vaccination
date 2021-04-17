@@ -11,7 +11,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 
 
@@ -27,7 +28,8 @@ const modules: any[] = [
   MatButtonToggleModule,
   MatSelectModule,
   MatAutocompleteModule,
-  MatExpansionModule
+  MatExpansionModule,
+  NgxMatSelectSearchModule
 ]
 
 @NgModule({

@@ -2,11 +2,9 @@
     <mat-label>{{title}}</mat-label>
     <input matInput
         type="text"
-        [(ngModel)]="input"
         name="textInput"
+        [formControl]= "textForm"
         attr.aria-label="{{title}}"
         [placeholder]="subtext"
-        (input)="onValueChange(input)"
-        maxlength="300"
         [required]="isRequired">
 </mat-form-field>

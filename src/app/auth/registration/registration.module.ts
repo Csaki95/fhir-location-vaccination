@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
@@ -22,7 +22,7 @@ export const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     FooterModule,
     BackgroundModule,

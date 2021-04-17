@@ -5,16 +5,17 @@
             <mat-card-header class="header centering">
                 <mat-card-title class="title centering">Registration</mat-card-title>
             </mat-card-header>
-            <mat-card-header class="centering" *ngIf="authError">
-                <mat-card-subtitle class="error centering">{{ authError?.message }}</mat-card-subtitle>
-            </mat-card-header>
+            <mat-error class="centering error">
+                {{ authError?.message }}
+            </mat-error>
             <mat-card-content>
-                <form #form="ngForm" (ngSubmit)="onSignUp(form)" class="login-form">
+                <form class="register-form" [formGroup]="form" (ngSubmit)="onSignUp()">
                     <mat-form-field class="full-width">
-                        <input matInput type="text" ngModel name="email" placeholder="Email address" required>
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" name="email" placeholder="Email address" formControlName="email">
                     </mat-form-field>
-                    <mat-form-field class="full-width" hintLabel="Minimum 6 characters">
-                        <input matInput type="password" ngModel name="password" placeholder="Password" minlength=6 maxlength=100 required>
+                    <mat-form-field class="full-width vertical-spacing">
+                        <input matInput type="password" name="password" placeholder="Password" formControlName="password">
                     </mat-form-field>
                     <button mat-flat-button type="submit" 
                             class="full-width button vertical-spacing" 
@@ -24,7 +25,7 @@
                 </form>
                 <div class="sub-login vertical-spacing">
                     <div class="centering">
-                        <button mat-button class="create-account centering" (click)="clearErr()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Back</button>
+                        <button mat-button class="create-account centering" [routerLink]="['/login']" routerLinkActive="router-link-active" >Back</button>
                     </div>
                 </div>
             </mat-card-content>

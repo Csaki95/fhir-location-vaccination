@@ -7,16 +7,17 @@
                 <mat-card-title class="title">Vaccination Locations</mat-card-title>
                 <mat-card-subtitle class="subtitle">Angular Firebase app based on <span style="white-space: nowrap;">FHIR-Location</span></mat-card-subtitle>
             </mat-card-header>
-            <mat-card-header class="centering" *ngIf="authError">
-                <mat-card-subtitle class="error centering">{{ authError?.message }}</mat-card-subtitle>
-            </mat-card-header>
+            <mat-error class="centering error">
+                {{ authError?.message }}
+            </mat-error>
             <mat-card-content>
-                <form #form="ngForm" (ngSubmit)="onSignIn(form)" class="login-form">
+                <form class="login-form" [formGroup]="form" (ngSubmit)="onSignIn()">
                     <mat-form-field class="full-width">
-                        <input matInput type="text" ngModel name="email" placeholder="Email address" required>
+                        <input matInput type="email" name="email" placeholder="Email address" formControlName="email">
+                        <mat-error *ngIf="form.get('email')?.invalid">{{getError()}}</mat-error>
                     </mat-form-field>
-                    <mat-form-field class="full-width">
-                        <input matInput type="password" ngModel name="password" placeholder="Password" minlength=6 maxlength=100 required>
+                    <mat-form-field class="full-width vertical-spacing">
+                        <input matInput type="password" name="password" placeholder="Password" formControlName="password">
                     </mat-form-field>
                     <button mat-flat-button type="submit" 
                             class="full-width button vertical-spacing" 
@@ -26,7 +27,7 @@
                 </form>
                 <div class="sub-login vertical-spacing">
                     <div class="centering">
-                        <button mat-button class="create-account centering" (click)="clearErr()" routerLink="/register">Create new account</button>
+                        <button mat-button class="create-account centering" routerLink="/register">Create new account</button>
                     </div>
                 </div>
             </mat-card-content>

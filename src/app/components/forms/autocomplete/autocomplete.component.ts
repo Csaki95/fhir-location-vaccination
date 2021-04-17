@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { take, takeUntil } from 'rxjs/operators';
+import { ReplaySubject, Subject, Subscription } from 'rxjs';
 
 /**
  * Recieve a title and an Enum object
@@ -16,17 +18,49 @@ export class AutocompleteComponent implements OnInit {
   @Input() title!: string;
   @Input() subtext!: string;
   @Input() enum!: Object;
+  public enumArray?: string[];
 
   myControl = new FormControl();
+  searchFilterControl = new FormControl();
 
-  @Output() valueEmitter: EventEmitter<string> = new EventEmitter();
+  public filteredEnum: ReplaySubject<Object> = new ReplaySubject<Object>(1);
+
+  @Output() valueEmitter: EventEmitter<any> = new EventEmitter();
+  private emitterSub?: Subscription;
+  private _onDestroy = new Subject();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.enumArray = Object.values(this.enum);
+    console.log(this.enumArray)
+
+    this.emitterSub = this.myControl.valueChanges.subscribe(val => {
+      if(this.myControl.value == 'null'){
+        this.valueEmitter.emit(null);
+      } else if (this.myControl.valid){
+        this.valueEmitter.emit(val)
+      }
+    })
+
+    // search value changes
+    this.searchFilterControl.valueChanges
+      .pipe(takeUntil(this._onDestroy))
+      .subscribe(() => {
+        this.filterEnum();
+      })
   }
 
-  onValueChange(event: { option: { id: string }; }){
-    this.valueEmitter.emit(event.option.id);
+  ngOnDestroy(): void {
+    this.emitterSub?.unsubscribe();
+  }
+
+  filterEnum() {
+    if(!this.enum){
+      return;
+    }
+    let search = this.searchFilterControl.value;
+    if(!search){
+    }
   }
 }

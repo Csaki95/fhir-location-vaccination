@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { FooterModule } from 'src/app/components/common/footer/footer.module';
 import { BackgroundModule } from 'src/app/components/common/background/background.module';
@@ -21,8 +21,8 @@ export const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule,
     FooterModule,
+    ReactiveFormsModule,
     BackgroundModule,
     FontAwesomeModule,
     RouterModule.forChild(routes)

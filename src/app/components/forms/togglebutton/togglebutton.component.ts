@@ -1,6 +1,6 @@
-import { TypeofExpr } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Status } from 'src/app/shared/models/enums/_status.enum';
+import { FormControl } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 /**
  * Recieve a title and an Enum object
@@ -14,17 +14,25 @@ import { Status } from 'src/app/shared/models/enums/_status.enum';
   styleUrls: ['./togglebutton.component.scss']
 })
 export class ToggleButtonComponent implements OnInit {
+  // Input title and the enum we display
   @Input() title!: string;
   @Input() enum!: Object;
 
+  // Outputs the selected value from the enum
   @Output() valueEmitter: EventEmitter<string> = new EventEmitter();
+  private emitterSub?: Subscription;
+
+  toggleForm = new FormControl();
 
   constructor() { }
 
   ngOnInit(): void {
+    this.emitterSub = this.toggleForm.valueChanges.subscribe(val => {
+      this.valueEmitter.emit(val);
+    })
   }
 
-  onValueChange(value: string){
-    this.valueEmitter.emit(value);
+  ngOnDestroy(): void {
+    this.emitterSub?.unsubscribe();
   }
 }

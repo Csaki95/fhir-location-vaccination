@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AutocompleteComponent } from './autocomplete.component';
+import { SelectSearchComponent } from './selectsearch.component';
 
-describe('AutocompleteComponent', () => {
-  let component: AutocompleteComponent;
-  let fixture: ComponentFixture<AutocompleteComponent>;
+describe('SelectSearchComponent', () => {
+  let component: SelectSearchComponent;
+  let fixture: ComponentFixture<SelectSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AutocompleteComponent ]
+      declarations: [ SelectSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AutocompleteComponent);
+    fixture = TestBed.createComponent(SelectSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -12,7 +12,7 @@
             <mat-card-content>
                 <form #form="ngForm" class="add-form">
                     <app-togglebutton [title]="'Location status:'" [enum]="Status" (valueEmitter)="setStatus($event)"></app-togglebutton>
-                    <app-autocomplete [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (valueEmitter)="setOperationalStatus($event)"></app-autocomplete>
+                    <app-selectsearch [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (valueEmitter)="setOperationalStatus($event)"></app-selectsearch>
                     <app-text [title]="'Name'" [subtext]="'Name of the facility'" [isRequired]="true" (valueEmitter)="setName($event)"></app-text>
                     <app-multiline-text [title]="'Alias'"></app-multiline-text>
                     <app-text [title]="'Description'" [subtext]="'Description of the facility'" (valueEmitter)="setDescription($event)"></app-text>

@@ -7,7 +7,7 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToggleButtonComponent } from 'src/app/components/forms/togglebutton/togglebutton.component';
-import { AutocompleteComponent } from 'src/app/components/forms/autocomplete/autocomplete.component';
+import { SelectSearchComponent } from 'src/app/components/forms/selectsearch/selectsearch.component';
 import { Routes } from '@angular/router';
 import { MultilineTextComponent } from 'src/app/components/forms/multiline-text/multiline-text.component';
 import { TextComponent } from 'src/app/components/forms/text/text.component';
@@ -24,7 +24,7 @@ export const routes: Routes = [
   declarations: [
     AdditemComponent,
     ToggleButtonComponent,
-    AutocompleteComponent,
+    SelectSearchComponent,
     TextComponent,
     MultilineTextComponent
   ],

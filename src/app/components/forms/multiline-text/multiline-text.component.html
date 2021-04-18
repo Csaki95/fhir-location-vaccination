@@ -1,20 +1,16 @@
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{title}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-form-field class="full-width">
-            <input matInput
-                type="text"
-                [(ngModel)]="input"
-                name="textInput"
-                attr.aria-label="{{title}}"
-                (input)="onValueChange(input)"
-                maxlength="300"
-                [required]="isRequired">
-        </mat-form-field>
-    </mat-expansion-panel>
-</mat-accordion>
-
+<button mat-flat-button class="add-button">
+    <fa-icon [icon]="plusIcon"></fa-icon>
+    Add new Alias
+</button>
+<mat-form-field>
+    <div class="container">
+        <p>{{title}}</p>
+        <input matInput fxFlex
+            type="text"
+            name="textInput"
+            [formControl]= "textForm"
+            attr.aria-label="{{title}}"
+            [placeholder]="subtext"
+            [required]="isRequired">
+    </div>    
+</mat-form-field>

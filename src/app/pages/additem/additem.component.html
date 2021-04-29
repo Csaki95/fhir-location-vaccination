@@ -10,26 +10,48 @@
                 <mat-card-subtitle class="error centering"></mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
-                <form #form="ngForm" class="add-form">
-                    <app-togglebutton [title]="'Location status:'" [enum]="Status" (valueEmitter)="setStatus($event)"></app-togglebutton>
-                    <app-selectsearch [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (valueEmitter)="setOperationalStatus($event)"></app-selectsearch>
-                    <app-text [title]="'Name'" [subtext]="'Name of the facility'" [isRequired]="true" (valueEmitter)="setName($event)"></app-text>
-                    <app-multiline-text [title]="'Alias'"></app-multiline-text>
-                    <app-text [title]="'Description'" [subtext]="'Description of the facility'" (valueEmitter)="setDescription($event)"></app-text>
+                <form [formGroup]="addForm" class="add-form">
+                    <div class="wrapper">
+                        <app-togglebutton [title]="'Location status:'" [enum]="Status" (formEmitter)="addChildFormControl('status',$event)"></app-togglebutton>
+                        <app-selectsearch [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (formEmitter)="addChildFormControl('operationalStatus',$event)"></app-selectsearch>
+                    </div>
+                    <div class="wrapper">
+                        <h3>Naming:</h3>
+                        <app-text [title]="'Name'" [subtext]="'Name of the facility'" [isRequired]="true" (formEmitter)="addChildFormControl('name',$event)"></app-text>
+                        <app-text [title]="'Description'" [subtext]="'Description of the facility'" (formEmitter)="addChildFormControl('description',$event)"></app-text>
+                    </div>
+                    <div class="wrapper">
+                        <h3>Contact:</h3>
+                        <app-selectsearch [title]="'Facility type'" [subtext]="'Select facility type'" [enum]="Type" (formEmitter)="addChildFormControl('facilityType',$event)"></app-selectsearch>
+                        <app-selectsearch [title]="'Contact type'" [subtext]="'Select contact type'" [enum]="ContactSystem" [hasNull]="false" (formEmitter)="addChildFormControl('contactType',$event)"></app-selectsearch>
+                        <app-text [title]="'Actual contact'" [subtext]="'Contact value (email, tel, fax)'" (formEmitter)="addChildFormControl('actualContact',$event)"></app-text>
+                        <app-selectsearch [title]="'Contact use'" [subtext]="'Select contact usage'" [enum]="ContactUse" [hasNull]="false" (formEmitter)="addChildFormControl('contactUse',$event)"></app-selectsearch> 
+                    </div>
+                    <div class="wrapper">
+                        <app-address (formEmitter)="addChildFormGroup('addressFormInput',$event)"></app-address>
+                    </div>
+                    <div class="wrapper">
+                        <h3>Physical type:</h3>
+                        <app-selectsearch [title]="'PhysicalType'" [subtext]="'Select location physical type'" [enum]="PhysicalType" [hasNull]="false" (formEmitter)="addChildFormControl('physicalType',$event)"></app-selectsearch> 
+                        <app-text [title]="'Managing Organization'" [subtext]="'Organization name that manages the location'" (formEmitter)="addChildFormControl('managingOrganization',$event)"></app-text>
+                        <app-text [title]="'Part of'" [subtext]="'The organization is part of'" (formEmitter)="addChildFormControl('partOf',$event)"></app-text>
+                    </div>
                     <div class="centering">
-                        <button mat-flat-button type="button" 
+                        <button mat-flat-button type="button"
                                 class="add-button vertical-spacing"
                                 routerLink="/home">
                                 Cancel
                         </button>
-                        <span class="form-spacer"></span>
+                        <span class="spacer"></span>
                         <button mat-flat-button type="submit" 
-                                class="add-button vertical-spacing" 
-                                [disabled]="form.invalid || form.pending">
+                                class="add-button vertical-spacing"
+                                [disabled]="addForm.invalid || addForm.pending"
+                                onclick="submit()">
                                 Submit
-                        </button>
+                    </button>
                     </div>                    
                 </form>
+                <p>Az eredmény: {{formOutput}}</p>
             </mat-card-content>
         </mat-card>
     </div>

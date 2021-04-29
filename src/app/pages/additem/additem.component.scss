@@ -1,7 +1,13 @@
 @use 'src/styles';
 
+.wrapper{
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background: styles.$body-color;
+}
 
-.form-spacer{
+.spacer{
     flex: 1 1 auto;
 }
 
@@ -12,8 +18,12 @@
 
     .container{
         width: 90%;
+        max-height: 80%;
+        overflow: auto;
         margin-top: 1rem;
-
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        
         .add-button{
             width: 40%;
         }

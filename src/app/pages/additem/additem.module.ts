@@ -6,11 +6,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MaterialModule } from 'src/app/shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ToggleButtonComponent } from 'src/app/components/forms/togglebutton/togglebutton.component';
-import { SelectSearchComponent } from 'src/app/components/forms/selectsearch/selectsearch.component';
 import { Routes } from '@angular/router';
-import { MultilineTextComponent } from 'src/app/components/forms/multiline-text/multiline-text.component';
-import { TextComponent } from 'src/app/components/forms/text/text.component';
+import { TogglebuttonModule } from 'src/app/components/forms/togglebutton/togglebutton.module';
+import { TextModule } from 'src/app/components/forms/text/text.module';
+import { SelectsearchModule } from 'src/app/components/forms/selectsearch/selectsearch.module';
+import { AddressModule } from 'src/app/components/forms/address/address.module';
 
 export const routes: Routes = [
   {
@@ -19,14 +19,9 @@ export const routes: Routes = [
   }
 ]
 
-
 @NgModule({
   declarations: [
-    AdditemComponent,
-    ToggleButtonComponent,
-    SelectSearchComponent,
-    TextComponent,
-    MultilineTextComponent
+    AdditemComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +30,11 @@ export const routes: Routes = [
     MaterialModule,
     FormsModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TogglebuttonModule,
+    TextModule,
+    SelectsearchModule,
+    AddressModule
   ],
   exports: [
     AdditemComponent

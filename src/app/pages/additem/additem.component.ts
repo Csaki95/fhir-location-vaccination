@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
+import { ContactSystem } from 'src/app/shared/models/enums/_contactSystem.enum';
+import { ContactUse } from 'src/app/shared/models/enums/_contactUse.enum';
 import { OperationalStatus } from 'src/app/shared/models/enums/_operational-status.enum';
+import { PhysicalType } from 'src/app/shared/models/enums/_physical-type.enum';
 import { Status } from 'src/app/shared/models/enums/_status.enum';
+import { Type } from 'src/app/shared/models/enums/_type.enum';
 
 
 @Component({
@@ -11,35 +16,45 @@ import { Status } from 'src/app/shared/models/enums/_status.enum';
 })
 export class AdditemComponent implements OnInit {
   angularIcon = faAngular;
+  addForm: FormGroup;
+  formOutput: any;
 
   // Typedefs
   Status = Status;
   OperationalStatus = OperationalStatus;
+  Type = Type;
+  ContactSystem = ContactSystem;
+  ContactUse = ContactUse;
+  PhysicalType = PhysicalType;
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+              private readonly changeDetectorRef: ChangeDetectorRef) {
+    this.addForm = this.fb.group({})
+  }
 
   ngOnInit(): void {
   }
 
-  setStatus(value: string){
-    let status: Status = value as Status;
-    console.log(status);
+  ngAfterViewInit(): void {
+    this.changeDetectorRef.detectChanges();
+
+    this.addForm
+      .valueChanges
+      .subscribe({
+        next: (value) => {
+          console.log(this.addForm.value);
+        }
+      });
   }
 
-  setOperationalStatus(value: string){
-    let opStatus: OperationalStatus = value as OperationalStatus;
-    console.log(opStatus);
+  addChildFormGroup(formName: string, form: FormGroup){
+    this.addForm.addControl(formName, form);
   }
 
-  setName(value: string){
-    console.log(value);
+  addChildFormControl(formName: string, form: FormControl){
+    this.addForm.addControl(formName, form);
   }
 
-  setDescription(value: string){
-    console.log(value);
-  }
-  
-  setAlias(value: string[]){
-    console.log(value);
+  submit(){
   }
 }

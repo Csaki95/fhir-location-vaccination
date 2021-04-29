@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginModule } from './auth/login/login.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireModule } from '@angular/fire';
@@ -35,7 +35,8 @@ import { AdditemModule } from './pages/additem/additem.module';
     FormsModule,
     FontAwesomeModule,
     MatDialogModule,
-    AdditemModule    
+    AdditemModule,
+    ReactiveFormsModule
   ],
   providers: [ ],
   bootstrap: [ AppComponent ]

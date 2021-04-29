@@ -13,8 +13,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 const modules: any[] = [
   MatCardModule,
@@ -29,7 +30,10 @@ const modules: any[] = [
   MatSelectModule,
   MatAutocompleteModule,
   MatExpansionModule,
-  NgxMatSelectSearchModule
+  NgxMatSelectSearchModule,
+  MatDatepickerModule,
+  MatChipsModule,
+  MatIconModule
 ]
 
 @NgModule({

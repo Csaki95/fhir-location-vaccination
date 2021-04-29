@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 /**
@@ -14,25 +14,20 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./togglebutton.component.scss']
 })
 export class ToggleButtonComponent implements OnInit {
+  toggleForm: FormControl;
+
   // Input title and the enum we display
   @Input() title!: string;
   @Input() enum!: Object;
 
   // Outputs the selected value from the enum
-  @Output() valueEmitter: EventEmitter<string> = new EventEmitter();
-  private emitterSub?: Subscription;
+  @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
 
-  toggleForm = new FormControl();
-
-  constructor() { }
-
-  ngOnInit(): void {
-    this.emitterSub = this.toggleForm.valueChanges.subscribe(val => {
-      this.valueEmitter.emit(val);
-    })
+  constructor(private fb: FormBuilder) {
+    this.toggleForm = this.fb.control('');
   }
 
-  ngOnDestroy(): void {
-    this.emitterSub?.unsubscribe();
+  ngOnInit(): void {
+    this.formEmitter.emit(this.toggleForm);
   }
 }

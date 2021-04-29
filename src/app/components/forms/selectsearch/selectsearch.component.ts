@@ -17,6 +17,8 @@ import { ReplaySubject, Subject, Subscription } from 'rxjs';
 export class SelectSearchComponent implements OnInit {
   @Input() title!: string;
   @Input() subtext!: string;
+  @Input() isRequired!: boolean;
+  @Input() multiselect!: boolean;
   @Input() hasNull?: boolean;
 
   // Input enum and a string array containing the values from it
@@ -31,8 +33,7 @@ export class SelectSearchComponent implements OnInit {
   public filteredEnum: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
 
   // Output to parent
-  @Output() valueEmitter: EventEmitter<any> = new EventEmitter();
-  private emitterSub?: Subscription;
+  @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
   // Ondesttroy for unsubscribing from search input
   private _onDestroy = new Subject();
 
@@ -42,13 +43,7 @@ export class SelectSearchComponent implements OnInit {
     this.enumToArray();
 
     // Subscribe to emit value towards parent
-    this.emitterSub = this.myControl.valueChanges.subscribe(val => {
-      if(this.myControl.value == 'None'){
-        this.valueEmitter.emit(null);
-      } else if (this.myControl.valid){
-        this.valueEmitter.emit(val)
-      }
-    })
+    this.formEmitter.emit(this.myControl);
 
     // Search value changes
     this.searchFilterControl.valueChanges
@@ -61,12 +56,13 @@ export class SelectSearchComponent implements OnInit {
   // Unsub from searchFilterControl, and emitter
   ngOnDestroy(): void {
     this._onDestroy.unsubscribe();
-    this.emitterSub?.unsubscribe();
   }
 
   enumToArray(){
     this.enumArray = Object.values(this.enum).filter(x => typeof x === 'string');
-    this.enumArray.splice(0,0,"None");
+    if(this.hasNull){
+      this.enumArray.splice(0,0,"None");
+    }
     this.filteredEnum.next(
       this.enumArray
     );

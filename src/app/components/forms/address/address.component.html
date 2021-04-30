@@ -1,15 +1,15 @@
 <form [formGroup]="addressForm">
   <h3>Address:</h3>
-  <app-selectsearch [title]="'Address Use'" [subtext]="'Select address use'" [enum]="addressUse" (formEmitter)="addChildFormControl('addressUse',$event)"></app-selectsearch>
-  <app-selectsearch [title]="'Address Type'" [subtext]="'Select address type'" [enum]="addressType" (formEmitter)="addChildFormControl('addressType',$event)"></app-selectsearch>
+  <app-selectsearch [title]="'Address Use'" [subtext]="'Select address use'" [enum]="addressUse" (formEmitter)="addChildFormControl('use',$event)"></app-selectsearch>
+  <app-selectsearch [title]="'Address Type'" [subtext]="'Select address type'" [enum]="addressType" (formEmitter)="addChildFormControl('type',$event)"></app-selectsearch>
   <mat-form-field class="address-full-width">
     <mat-label>Address</mat-label>
-    <textarea matInput formControlName="address" placeholder="Ex. Minta street 54. 2.e"></textarea>
+    <textarea matInput formControlName="line" placeholder="Ex. Minta street 54. 2.e"></textarea>
   </mat-form-field>
   <table class="address-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="address-full-width">
       <mat-label>City</mat-label>
-      <input matInput formControlName="addressCity" placeholder="Ex. San Francisco">
+      <input matInput formControlName="city" placeholder="Ex. San Francisco">
     </mat-form-field></td>
     <td><mat-form-field class="address-full-width">
       <mat-label>Postal Code</mat-label>
@@ -18,6 +18,6 @@
   </tr></table>
   <mat-form-field class="address-full-width">
     <mat-label>Country</mat-label>
-    <textarea matInput formControlName="countryInput"></textarea>
+    <textarea matInput formControlName="country"></textarea>
   </mat-form-field>
 </form>

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-text',
@@ -14,9 +14,11 @@ export class TextComponent implements OnInit {
 
   @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
 
-  textForm = new FormControl('', [Validators.maxLength(300)]);
+  textForm: FormControl;
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { 
+    this.textForm = this.fb.control(null, [Validators.maxLength(300), Validators.required])
+  }
 
   ngOnInit(): void {
     this.formEmitter.emit(this.textForm);

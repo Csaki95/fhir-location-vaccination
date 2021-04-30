@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
 import { ReplaySubject, Subject, Subscription } from 'rxjs';
 
@@ -26,8 +26,8 @@ export class SelectSearchComponent implements OnInit {
   public enumArray: string[] = [];
 
   // Form controls
-  myControl = new FormControl();
-  searchFilterControl = new FormControl();
+  myControl: FormControl;
+  searchFilterControl: FormControl;
 
   // Filtered list
   public filteredEnum: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
@@ -37,7 +37,10 @@ export class SelectSearchComponent implements OnInit {
   // Ondesttroy for unsubscribing from search input
   private _onDestroy = new Subject();
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.myControl = this.fb.control(null);
+    this.searchFilterControl = this.fb.control(null);
+  }
 
   ngOnInit(): void {
     this.enumToArray();

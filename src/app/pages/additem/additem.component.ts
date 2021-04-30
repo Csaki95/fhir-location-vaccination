@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
+import { CrudService } from 'src/app/services/crud.service';
 import { ContactSystem } from 'src/app/shared/models/enums/_contactSystem.enum';
 import { ContactUse } from 'src/app/shared/models/enums/_contactUse.enum';
 import { OperationalStatus } from 'src/app/shared/models/enums/_operational-status.enum';
@@ -28,7 +29,8 @@ export class AdditemComponent implements OnInit {
   PhysicalType = PhysicalType;
 
   constructor(private fb: FormBuilder,
-              private readonly changeDetectorRef: ChangeDetectorRef) {
+              private readonly changeDetectorRef: ChangeDetectorRef,
+              private locationService: CrudService) {
     this.addForm = this.fb.group({})
   }
 
@@ -56,5 +58,6 @@ export class AdditemComponent implements OnInit {
   }
 
   submit(){
+    //this.locationService.createLocation();
   }
 }

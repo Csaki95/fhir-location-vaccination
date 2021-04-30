@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 /**
  * Recieve a title and an Enum object
@@ -24,7 +23,7 @@ export class ToggleButtonComponent implements OnInit {
   @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
-    this.toggleForm = this.fb.control('');
+    this.toggleForm = this.fb.control(null);
   }
 
   ngOnInit(): void {

@@ -20,12 +20,12 @@ export class AddressComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.addressForm = this.fb.group({
-      address: [null, Validators.required],
-      addressCity: [null, Validators.required],
+      line: [null, Validators.required],
+      city: [null, Validators.required],
       postalCode: [null, Validators.compose([
         Validators.required, Validators.min(1000), Validators.max(9999), Validators.pattern('[0-9]{4}')])
       ],
-      countryInput: [null, Validators.required],
+      country: [null, Validators.required],
     });
   }
 

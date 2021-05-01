@@ -4,8 +4,8 @@ import { AddressUse } from "../enums/_addressUse.enum";
 export interface Address {
     use?: AddressUse,
     type?: AddressType,
-    line?: string,
-    city?: string,
-    postalCode?: string,
-    country?: string,
+    line: string,
+    city: string,
+    postalCode: number,
+    country: string,
 }

@@ -3,8 +3,7 @@ import { Status } from "./enums/_status.enum";
 import { Type } from "./enums/_type.enum";
 import { PhysicalType } from "./enums/_physical-type.enum";
 import { Address } from "./interfaces/_address.interface";
-import { ContactSystem } from "./enums/_contactSystem.enum";
-import { ContactUse } from "./enums/_contactUse.enum";
+import { ContactPoint } from "./interfaces/_contactPoint.interface";
 
 export interface Location {
     id?: string,
@@ -12,10 +11,8 @@ export interface Location {
     operationalStatus?: OperationalStatus,
     name: string,
     description?: string,
-    type?: Type,
-    contactSystem?: ContactSystem,
-    contactValue?: string,
-    contactUse?: ContactUse
+    type?: Type[],
+    telekom?: ContactPoint,
     address?: Address,
     physicalType?: PhysicalType,
     managingOrganization?: string,

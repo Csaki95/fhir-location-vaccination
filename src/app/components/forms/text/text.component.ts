@@ -17,7 +17,7 @@ export class TextComponent implements OnInit {
   textForm: FormControl;
 
   constructor(private fb: FormBuilder) { 
-    this.textForm = this.fb.control(null, [Validators.maxLength(300), Validators.required])
+    this.textForm = this.fb.control(null, [Validators.maxLength(300)])
   }
 
   ngOnInit(): void {

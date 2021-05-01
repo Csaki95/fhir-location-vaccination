@@ -11,6 +11,7 @@ import { TogglebuttonModule } from 'src/app/components/forms/togglebutton/toggle
 import { TextModule } from 'src/app/components/forms/text/text.module';
 import { SelectsearchModule } from 'src/app/components/forms/selectsearch/selectsearch.module';
 import { AddressModule } from 'src/app/components/forms/address/address.module';
+import { TelekomModule } from 'src/app/components/forms/telekom/telekom.module';
 
 export const routes: Routes = [
   {
@@ -34,7 +35,8 @@ export const routes: Routes = [
     TogglebuttonModule,
     TextModule,
     SelectsearchModule,
-    AddressModule
+    AddressModule,
+    TelekomModule
   ],
   exports: [
     AdditemComponent

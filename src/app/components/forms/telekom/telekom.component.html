@@ -1,0 +1,5 @@
+<form [formGroup]="telecom">
+    <app-selectsearch [title]="'Contact type'" [subtext]="'Select contact type'" [enum]="ContactSystem" [hasNull]="false" (formEmitter)="addChildFormControl('contactSystem',$event)"></app-selectsearch>
+    <app-text [title]="'Actual contact'" [subtext]="'Contact value (email, tel, fax)'" (formEmitter)="addChildFormControl('contactValue',$event)"></app-text>
+    <app-selectsearch [title]="'Contact use'" [subtext]="'Select contact usage'" [enum]="ContactUse" [hasNull]="false" (formEmitter)="addChildFormControl('contactUse',$event)"></app-selectsearch> 
+</form>

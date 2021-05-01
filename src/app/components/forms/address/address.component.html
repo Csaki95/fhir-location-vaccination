@@ -4,20 +4,20 @@
   <app-selectsearch [title]="'Address Type'" [subtext]="'Select address type'" [enum]="addressType" (formEmitter)="addChildFormControl('type',$event)"></app-selectsearch>
   <mat-form-field class="address-full-width">
     <mat-label>Address</mat-label>
-    <textarea matInput formControlName="line" placeholder="Ex. Minta street 54. 2.e"></textarea>
+    <textarea matInput formControlName="line" placeholder="Ex. Minta street 54. 2.e" required="true"></textarea>
   </mat-form-field>
   <table class="address-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="address-full-width">
       <mat-label>City</mat-label>
-      <input matInput formControlName="city" placeholder="Ex. San Francisco">
+      <input matInput formControlName="city" placeholder="Ex. San Francisco" required="true">
     </mat-form-field></td>
     <td><mat-form-field class="address-full-width">
       <mat-label>Postal Code</mat-label>
-      <input matInput type="number" formControlName="postalCode" placeholder="Ex. 6710">
+      <input matInput type="number" formControlName="postalCode" placeholder="Ex. 6710" required="true">
     </mat-form-field></td>
   </tr></table>
   <mat-form-field class="address-full-width">
     <mat-label>Country</mat-label>
-    <textarea matInput formControlName="country"></textarea>
+    <textarea matInput formControlName="country" required="true"></textarea>
   </mat-form-field>
 </form>

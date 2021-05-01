@@ -22,10 +22,8 @@
                     </div>
                     <div class="wrapper">
                         <h3>Contact:</h3>
-                        <app-selectsearch [title]="'Facility type'" [subtext]="'Select facility type'" [enum]="Type" (formEmitter)="addChildFormControl('type',$event)"></app-selectsearch>
-                        <app-selectsearch [title]="'Contact type'" [subtext]="'Select contact type'" [enum]="ContactSystem" [hasNull]="false" (formEmitter)="addChildFormControl('contactSystem',$event)"></app-selectsearch>
-                        <app-text [title]="'Actual contact'" [subtext]="'Contact value (email, tel, fax)'" (formEmitter)="addChildFormControl('contactValue',$event)"></app-text>
-                        <app-selectsearch [title]="'Contact use'" [subtext]="'Select contact usage'" [enum]="ContactUse" [hasNull]="false" (formEmitter)="addChildFormControl('contactUse',$event)"></app-selectsearch> 
+                        <app-selectsearch [title]="'Facility type'" [subtext]="'Select facility type'" [multiselect]="true" [enum]="Type" (formEmitter)="addChildFormControl('type',$event)"></app-selectsearch>
+                        <app-telekom (formEmitter)="addChildFormGroup('telecom',$event)"></app-telekom>
                     </div>
                     <div class="wrapper">
                         <app-address (formEmitter)="addChildFormGroup('address',$event)"></app-address>

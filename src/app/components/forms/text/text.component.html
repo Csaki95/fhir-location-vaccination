@@ -4,7 +4,7 @@
         *ngIf="!isRange"
         type="text"
         name="textInput"
-        [formControl]= "textForm"
+        [formControl]="textForm"
         attr.aria-label="{{title}}"
         [placeholder]="subtext"
         [required]="isRequired">
@@ -12,7 +12,7 @@
         *ngIf="isRange"
         type="number"
         name="textInput"
-        [formControl]= "textForm"
+        [formControl]="textForm"
         attr.aria-label="{{title}}"
         min="1"
         max="10"

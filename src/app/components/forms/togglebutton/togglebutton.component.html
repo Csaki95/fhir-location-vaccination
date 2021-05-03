@@ -1,4 +1,6 @@
 <h3 class="title">{{title}}</h3>
-<mat-button-toggle-group class="button-container full-width" [formControl]="toggleForm" aria-label="Status of location">
-    <mat-button-toggle class="radio-button" *ngFor="let item of enum | keyvalue" [value]="item.key">{{[item.value]}}</mat-button-toggle>
+<mat-button-toggle-group class="button-container full-width"
+    [formControl]="toggleForm" aria-label="Status of location">
+    <mat-button-toggle class="radio-button" *ngFor="let item of enum | keyvalue"
+        [value]="item.key">{{[item.value]}}</mat-button-toggle>
 </mat-button-toggle-group>

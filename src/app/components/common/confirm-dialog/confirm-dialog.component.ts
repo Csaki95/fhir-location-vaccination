@@ -5,21 +5,22 @@ import { AuthService } from 'src/app/auth/auth.service';
 @Component({
   selector: 'app-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+  styleUrls: ['./confirm-dialog.component.scss'],
 })
 export class ConfirmDialogComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-              private auth: AuthService){}
+  constructor(
+    public dialogRef: MatDialogRef<ConfirmDialogComponent>,
+    private auth: AuthService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  onYesClick(): void{
+  onYesClick(): void {
     this.dialogRef.close();
     this.auth.logOut();
   }
 
-  onNoClick(): void{
+  onNoClick(): void {
     this.dialogRef.close();
   }
 }

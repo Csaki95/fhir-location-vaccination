@@ -1,16 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 /**
  * Recieve a title and an Enum object
  * Then build a full-width toggle button component from it
- * 
+ *
  * returns: the selected enum value
  */
 @Component({
   selector: 'app-togglebutton',
   templateUrl: './togglebutton.component.html',
-  styleUrls: ['./togglebutton.component.scss']
+  styleUrls: ['./togglebutton.component.scss'],
 })
 export class ToggleButtonComponent implements OnInit {
   toggleForm: FormControl;
@@ -19,14 +19,15 @@ export class ToggleButtonComponent implements OnInit {
   @Input() title!: string;
   @Input() enum!: Object;
 
-  // Outputs the selected value from the enum
-  @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
+  // parent form requirements
+  @Input() formName!: string;
+  @Input() formGroup!: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.toggleForm = this.fb.control(null);
   }
 
   ngOnInit(): void {
-    this.formEmitter.emit(this.toggleForm);
+    this.formGroup.addControl(this.formName, this.toggleForm);
   }
 }

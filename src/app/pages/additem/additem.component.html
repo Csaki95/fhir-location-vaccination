@@ -1,54 +1,202 @@
 <div class="add-page">
-    <app-background></app-background> 
-    <div class="centering">
-        <mat-card class="container">
-            <mat-card-header class="header centering">
-                <fa-icon class="angular-icon" matCardAvatar [icon]="angularIcon"></fa-icon>
-                <mat-card-title class="title">Add new</mat-card-title>
-            </mat-card-header>
-            <mat-card-header class="centering">
-                <mat-card-subtitle class="error centering"></mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <form [formGroup]="addForm" class="add-form" onsubmit="submit()">
-                    <div class="wrapper">
-                        <app-togglebutton [title]="'Location status:'" [enum]="Status" (formEmitter)="addChildFormControl('status',$event)"></app-togglebutton>
-                        <app-selectsearch [title]="'Operational status'" [subtext]="'Select current operational status'" [enum]="OperationalStatus" (formEmitter)="addChildFormControl('operationalStatus',$event)"></app-selectsearch>
-                    </div>
-                    <div class="wrapper">
-                        <h3>Naming:</h3>
-                        <app-text [title]="'Name'" [subtext]="'Name of the facility'" [isRequired]="true" (formEmitter)="addChildFormControl('name',$event)"></app-text>
-                        <app-text [title]="'Description'" [subtext]="'Description of the facility'" (formEmitter)="addChildFormControl('description',$event)"></app-text>
-                    </div>
-                    <div class="wrapper">
-                        <h3>Contact:</h3>
-                        <app-selectsearch [title]="'Facility type'" [subtext]="'Select facility type'" [multiselect]="true" [enum]="Type" (formEmitter)="addChildFormControl('type',$event)"></app-selectsearch>
-                        <app-telekom (formEmitter)="addChildFormGroup('telecom',$event)"></app-telekom>
-                    </div>
-                    <div class="wrapper">
-                        <app-address (formEmitter)="addChildFormGroup('address',$event)"></app-address>
-                    </div>
-                    <div class="wrapper">
-                        <h3>Physical type:</h3>
-                        <app-selectsearch [title]="'PhysicalType'" [subtext]="'Select location physical type'" [enum]="PhysicalType" [hasNull]="false" (formEmitter)="addChildFormControl('physicalType',$event)"></app-selectsearch> 
-                        <app-text [title]="'Managing Organization'" [subtext]="'Organization name that manages the location'" (formEmitter)="addChildFormControl('managingOrganization',$event)"></app-text>
-                        <app-text [title]="'Part of'" [subtext]="'The organization is part of'" (formEmitter)="addChildFormControl('partOf',$event)"></app-text>
-                    </div>
-                    <div class="centering">
-                        <button mat-flat-button type="button"
-                                class="add-button vertical-spacing"
-                                routerLink="/home">
-                                Cancel
-                        </button>
-                        <span class="spacer"></span>
-                        <button mat-flat-button type="submit" 
-                                class="add-button vertical-spacing"
-                                [disabled]="addForm.invalid || addForm.pending">
-                                Submit
-                    </button>
-                    </div>                    
-                </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+	<app-background></app-background>
+	<div class="centering">
+		<mat-card class="container">
+			<mat-card-header class="header centering">
+				<fa-icon
+					class="angular-icon"
+					matCardAvatar
+					[icon]="angularIcon"></fa-icon>
+				<mat-card-title class="title">Add new</mat-card-title>
+			</mat-card-header>
+			<mat-card-header class="centering">
+				<mat-card-subtitle class="error centering"></mat-card-subtitle>
+			</mat-card-header>
+			<mat-card-content>
+				<form [formGroup]="addForm" class="add-form" (ngSubmit)="submitForm()">
+					<div class="wrapper">
+						<h3>Location status:</h3>
+						<mat-button-toggle-group class="button-container full-width"
+							formControlName="status" aria-label="Status of location">
+							<mat-button-toggle class="radio-button" *ngFor="let item of Status |
+								keyvalue"
+								[value]="item.key">{{[item.value]}}</mat-button-toggle>
+						</mat-button-toggle-group>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Operational status</mat-label>
+							<mat-select formControlName="operationalStatus">
+								<mat-option *ngFor="let item of getKeys(OperationalStatus)"
+									[value]="item">
+									{{item}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+					</div>
+					<div class="wrapper">
+						<h3>Naming:</h3>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Name</mat-label>
+							<input matInput
+								type="text"
+								formControlName="name"
+								attr.aria-label="Name"
+								placeholder="Name of the facility"
+								required="true">
+						</mat-form-field>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Description</mat-label>
+							<input matInput
+								type="text"
+								formControlName="description"
+								attr.aria-label="Description"
+								placeholder="Description of the facility">
+						</mat-form-field>
+					</div>
+					<div class="wrapper">
+						<h3>Contact:</h3>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Facility type</mat-label>
+							<mat-select formControlName="type" multiple="true">
+								<mat-option>
+									<ngx-mat-select-search [formControl]="searchFilterControl"
+										placeholderLabel="Select facility type"
+										noEntriesFoundLabel="No matching value"></ngx-mat-select-search>
+								</mat-option>
+								<mat-option *ngFor="let item of filteredEnum | async" [value]="item">
+									{{item}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<div formGroupName="telekom">
+							<mat-form-field class="full-width top-spacing">
+								<mat-label>Contact type</mat-label>
+								<mat-select formControlName="contactSystem">
+									<mat-option *ngFor="let item of getKeys(ContactSystem)" [value]="item">
+										{{item}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+							<mat-form-field class="full-width top-spacing">
+								<mat-label>Actual contact</mat-label>
+								<input matInput
+									type="text"
+									formControlName="contactValue"
+									attr.aria-label="Actual contact"
+									placeholder="Contact value (email, tel, fax)">
+							</mat-form-field>
+							<mat-form-field class="full-width top-spacing">
+								<mat-label>Contact use</mat-label>
+								<mat-select formControlName="contactUse">
+									<mat-option *ngFor="let item of getKeys(ContactUse)" [value]="item">
+										{{item}}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+					<div class="wrapper" formGroupName="address">
+						<h3>Address:</h3>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Address Use</mat-label>
+							<mat-select formControlName="use">
+								<mat-option *ngFor="let item of getKeys(addressUse)" [value]="item">
+									{{item}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Address Type</mat-label>
+							<mat-select formControlName="type">
+								<mat-option *ngFor="let item of getKeys(addressType)" [value]="item">
+									{{item}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Address</mat-label>
+							<textarea
+								matInput
+								formControlName="line"
+								placeholder="Ex. Minta street 54. 2.e"
+								required="true">
+							</textarea>
+						</mat-form-field>
+						<table class="full-width top-spacing" cellspacing="0">
+							<tr>
+								<td>
+									<mat-form-field class="full-width">
+										<mat-label>City</mat-label>
+										<input
+											matInput
+											formControlName="city"
+											placeholder="Ex. San Francisco"
+											required="true"/>
+									</mat-form-field>
+								</td>
+								<td>
+									<mat-form-field class="full-width">
+										<mat-label>Postal Code</mat-label>
+										<input
+											matInput
+											type="number"
+											formControlName="postalCode"
+											placeholder="Ex. 6710"
+											required="true"/>
+									</mat-form-field>
+								</td>
+							</tr>
+						</table>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Country</mat-label>
+							<input matInput formControlName="country" required="true"/>
+						</mat-form-field>
+					</div>
+					<div class="wrapper">
+						<h3>Physical type:</h3>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Physical Type</mat-label>
+							<mat-select formControlName="physicalType">
+								<mat-option *ngFor="let item of getKeys(PhysicalType)" [value]="item">
+									{{item}}
+								</mat-option>
+							</mat-select>
+						</mat-form-field>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Managing Organization</mat-label>
+							<input
+								matInput
+								type="text"
+								formControlName="managingOrganization"
+								placeholder="Organization name that manages the location"/>
+						</mat-form-field>
+						<mat-form-field class="full-width top-spacing">
+							<mat-label>Part of</mat-label>
+							<input
+								matInput
+								type="text"
+								formControlName="partOf"
+								placeholder="The organization is part of"/>
+						</mat-form-field>
+					</div>
+					<div class="centering">
+						<button
+							mat-flat-button
+							type="button"
+							class="add-button vertical-spacing"
+							routerLink="/home">
+							Cancel
+						</button>
+						<span class="spacer"></span>
+						<button
+							mat-flat-button
+							type="submit"
+							class="add-button vertical-spacing"
+							[disabled]="addForm.invalid || addForm.pending">
+							Submit
+						</button>
+					</div>
+				</form>
+			</mat-card-content>
+		</mat-card>
+	</div>
 </div>

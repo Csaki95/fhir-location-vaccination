@@ -1,20 +1,22 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { takeUntil } from 'rxjs/operators';
-import { ReplaySubject, Subject, Subscription } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 /**
  * Recieve a title and an Enum object
  * Then build a full-width autocomplete dropdown component from it
- * 
- * returns: the selected enum value
  */
 @Component({
   selector: 'app-selectsearch',
   templateUrl: './selectsearch.component.html',
-  styleUrls: ['./selectsearch.component.scss'] 
+  styleUrls: ['./selectsearch.component.scss'],
 })
 export class SelectSearchComponent implements OnInit {
+  selectControl: FormControl;
+  searchFilterControl: FormControl;
+
+  // setup properties
   @Input() title!: string;
   @Input() subtext!: string;
   @Input() isRequired!: boolean;
@@ -25,61 +27,58 @@ export class SelectSearchComponent implements OnInit {
   @Input() enum!: Object;
   public enumArray: string[] = [];
 
-  // Form controls
-  myControl: FormControl;
-  searchFilterControl: FormControl;
+  // parent form requirements
+  @Input() formName!: string;
+  @Input() formGroup!: FormGroup;
 
   // Filtered list
   public filteredEnum: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
 
-  // Output to parent
-  @Output() formEmitter: EventEmitter<FormControl> = new EventEmitter();
   // Ondesttroy for unsubscribing from search input
   private _onDestroy = new Subject();
 
   constructor(private fb: FormBuilder) {
-    this.myControl = this.fb.control(null);
+    this.selectControl = this.fb.control(null);
     this.searchFilterControl = this.fb.control(null);
   }
 
   ngOnInit(): void {
     this.enumToArray();
 
-    // Subscribe to emit value towards parent
-    this.formEmitter.emit(this.myControl);
+    this.formGroup.addControl(this.formName, this.selectControl);
 
     // Search value changes
     this.searchFilterControl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
         this.filterEnum();
-      })
+      });
   }
 
-  // Unsub from searchFilterControl, and emitter
+  // Unsub from searchFilterControl
   ngOnDestroy(): void {
     this._onDestroy.unsubscribe();
   }
 
-  enumToArray(){
-    this.enumArray = Object.values(this.enum).filter(x => typeof x === 'string');
-    if(this.hasNull){
-      this.enumArray.splice(0,0,"None");
-    }
-    this.filteredEnum.next(
-      this.enumArray
+  enumToArray() {
+    this.enumArray = Object.values(this.enum).filter(
+      (x) => typeof x === 'string'
     );
+    if (this.hasNull) {
+      this.enumArray.splice(0, 0, 'None');
+    }
+    this.filteredEnum.next(this.enumArray);
   }
 
   filterEnum() {
     // Get the search keyword
     let search = this.searchFilterControl.value;
-    if(!search){
-    }
 
     // Filter the list by the search
     this.filteredEnum.next(
-      this.enumArray.filter(enumArray => enumArray.toLowerCase().indexOf(search) > -1)
+      this.enumArray.filter(
+        (enumArray) => enumArray.toLowerCase().indexOf(search) > -1
+      )
     );
   }
 }

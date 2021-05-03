@@ -16,14 +16,12 @@ import { TelekomModule } from 'src/app/components/forms/telekom/telekom.module';
 export const routes: Routes = [
   {
     path: '',
-    component: AdditemComponent
-  }
-]
+    component: AdditemComponent,
+  },
+];
 
 @NgModule({
-  declarations: [
-    AdditemComponent
-  ],
+  declarations: [AdditemComponent],
   imports: [
     CommonModule,
     BackgroundModule,
@@ -36,10 +34,8 @@ export const routes: Routes = [
     TextModule,
     SelectsearchModule,
     AddressModule,
-    TelekomModule
+    TelekomModule,
   ],
-  exports: [
-    AdditemComponent
-  ]
+  exports: [AdditemComponent],
 })
-export class AdditemModule { }
+export class AdditemModule {}

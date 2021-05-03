@@ -1,21 +1,22 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CrudService } from 'src/app/services/crud.service';
 import { Location } from 'src/app/shared/models/location.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   isMobile: boolean = false;
   Locations: Location[] | null = null;
 
-  constructor(public breakpointObserver: BreakpointObserver,
-              private router: Router) { }
-  
+  constructor(
+    public breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
     /**
      * Subscribe to location changes
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  openAddPage(){
+  openAddPage() {
     this.router.navigate(['/add']);
   }
 }

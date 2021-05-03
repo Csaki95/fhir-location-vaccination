@@ -5,16 +5,14 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SelectsearchModule } from '../selectsearch/selectsearch.module';
 
-
-
 @NgModule({
-  declarations: [ AddressComponent ],
+  declarations: [AddressComponent],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    SelectsearchModule
+    SelectsearchModule,
   ],
-  exports: [ AddressComponent ]
+  exports: [AddressComponent],
 })
-export class AddressModule { }
+export class AddressModule {}

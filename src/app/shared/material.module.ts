@@ -33,18 +33,12 @@ const modules: any[] = [
   NgxMatSelectSearchModule,
   MatDatepickerModule,
   MatChipsModule,
-  MatIconModule
-]
+  MatIconModule,
+];
 
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModule,
-    ...modules
-  ],
-  exports: [
-    ...modules
-  ]
+  declarations: [],
+  imports: [CommonModule, ...modules],
+  exports: [...modules],
 })
-export class MaterialModule { }
+export class MaterialModule {}

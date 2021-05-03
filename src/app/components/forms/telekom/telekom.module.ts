@@ -6,21 +6,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SelectsearchModule } from '../selectsearch/selectsearch.module';
 import { TextModule } from '../text/text.module';
 
-
-
 @NgModule({
-  declarations: [
-    TelekomComponent
-  ],
+  declarations: [TelekomComponent],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
     SelectsearchModule,
-    TextModule
+    TextModule,
   ],
-  exports: [
-    TelekomComponent
-  ]
+  exports: [TelekomComponent],
 })
-export class TelekomModule { }
+export class TelekomModule {}

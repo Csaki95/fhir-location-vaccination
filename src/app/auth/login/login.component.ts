@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 
@@ -20,12 +20,22 @@ export class LoginComponent implements OnInit {
   authError: any;
   private errorSub?: Subscription;
 
-  form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required])
-  })
+  form: FormGroup;
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,
+              private fb: FormBuilder) {
+    this.form = this.fb.group({
+      email: [null, Validators.compose([
+        Validators.required,
+        Validators.email
+      ])],
+      password: [null, Validators.compose([
+        Validators.minLength(6), 
+        Validators.maxLength(100), 
+        Validators.required
+      ])]
+    })
+  }
 
   // Subscribe to the error message
   ngOnInit(): void {

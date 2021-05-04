@@ -1,8 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
-import { Subject } from 'rxjs';
-import { ReplaySubject } from 'rxjs';
+import { Subject, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CrudService } from 'src/app/services/crud.service';
 import { AddressType } from 'src/app/shared/models/enums/_addressType.enum';
@@ -35,7 +39,7 @@ export class AdditemComponent implements OnInit {
   ContactUse = ContactUse;
   addressUse = AddressUse;
   addressType = AddressType;
-  
+
   // Filtered list
   public filteredEnum: ReplaySubject<string[]> = new ReplaySubject<string[]>(1);
   public enumArray: string[] = [];
@@ -58,7 +62,7 @@ export class AdditemComponent implements OnInit {
       telekom: this.fb.group({
         contactSystem: [null],
         contactValue: [null],
-        contactUse: [null]
+        contactUse: [null],
       }),
       address: this.fb.group({
         use: [null],
@@ -78,7 +82,7 @@ export class AdditemComponent implements OnInit {
       }),
       physicalType: [null],
       managingOrganization: [null],
-      partOf: [null]
+      partOf: [null],
     });
     // Selectsearch field
     this.searchFilterControl = this.fb.control(null);
@@ -110,7 +114,7 @@ export class AdditemComponent implements OnInit {
     this._onDestroy.unsubscribe();
   }
 
-  getKeys(obj: any){
+  getKeys(obj: any) {
     return Object.values(obj);
   }
 
@@ -135,5 +139,6 @@ export class AdditemComponent implements OnInit {
 
   submitForm(): void {
     let locationItem = this.addForm.value as Location;
+    this.service.add('Locations',locationItem);
   }
 }

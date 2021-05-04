@@ -1,6 +1,8 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { CrudService } from 'src/app/services/crud.service';
 import { Location } from 'src/app/shared/models/location.model';
 
 @Component({
@@ -10,17 +12,19 @@ import { Location } from 'src/app/shared/models/location.model';
 })
 export class HomeComponent implements OnInit {
   isMobile: boolean = false;
-  Locations: Location[] | null = null;
+  Locations: Observable<Location[]> | null = null;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private service: CrudService<Location>
   ) {}
 
   ngOnInit(): void {
     /**
      * Subscribe to location changes
      */
+    this.Locations = this.service.get('Locations', 'name');
 
     /**
      * Subscribe to breakpointObserver

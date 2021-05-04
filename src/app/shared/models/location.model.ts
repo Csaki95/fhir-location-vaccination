@@ -13,7 +13,7 @@ export interface Location {
     description?: string,
     type?: Type[],
     telekom?: ContactPoint,
-    address?: Address,
+    address: Address,
     physicalType?: PhysicalType,
     managingOrganization?: string,
     partOf?: string,

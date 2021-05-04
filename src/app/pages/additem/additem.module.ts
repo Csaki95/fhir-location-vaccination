@@ -7,11 +7,6 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
-import { TogglebuttonModule } from 'src/app/components/forms/togglebutton/togglebutton.module';
-import { TextModule } from 'src/app/components/forms/text/text.module';
-import { SelectsearchModule } from 'src/app/components/forms/selectsearch/selectsearch.module';
-import { AddressModule } from 'src/app/components/forms/address/address.module';
-import { TelekomModule } from 'src/app/components/forms/telekom/telekom.module';
 
 export const routes: Routes = [
   {
@@ -29,12 +24,7 @@ export const routes: Routes = [
     MaterialModule,
     FormsModule,
     RouterModule.forChild(routes),
-    ReactiveFormsModule,
-    TogglebuttonModule,
-    TextModule,
-    SelectsearchModule,
-    AddressModule,
-    TelekomModule,
+    ReactiveFormsModule
   ],
   exports: [AdditemComponent],
 })

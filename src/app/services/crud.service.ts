@@ -23,4 +23,12 @@ export class CrudService <T extends { id?: string }> {
       return query;
     }).valueChanges() as Observable<T[]>;
   }
+
+  update(collectionName: string, id: string, data: T): Promise<void>{
+    return this.afs.collection(collectionName).doc(id).update(data);
+  }
+
+  delete(collectionName: string, id: string): Promise<void>{
+    return this.afs.collection(collectionName).doc(id).delete();
+  }
 }

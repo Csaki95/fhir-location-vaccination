@@ -12,10 +12,6 @@
     font-size: 0.75rem;
 } 
 
-.spacer{
-    flex: 1 1 auto;
-}
-
 .add-page{
     height: 100%;
     width: 100%;
@@ -31,6 +27,10 @@
         
         .add-button{
             width: 40%;
+        }
+
+        .flex{
+            flex-grow: 1;
         }
     }
 }

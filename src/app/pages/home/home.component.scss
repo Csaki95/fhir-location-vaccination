@@ -3,12 +3,18 @@
 .home-container{
     margin: 1rem;
     font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    .location-item{
+        margin-bottom: 1rem;
+    }
 }
 
 .top{
-    margin-top: 6rem;
+    padding-top: 4rem;
 }
 
 .bottom{
-    margin-bottom: 6rem;
+    padding-bottom: 4rem;
 }

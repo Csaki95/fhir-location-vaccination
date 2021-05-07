@@ -1,9 +1,7 @@
 <app-navbar [isMobile]="isMobile" (addNewItem)="openAddPage()"></app-navbar>
 <app-background *ngIf="isMobile"></app-background>
 <div [ngClass]="isMobile ? 'bottom' : 'top'" class="home-container">
-    <div class="location-list">
-        <div class="location-item" *ngFor="let item of Locations | async">
-            <app-list-item [locationItem]="item"></app-list-item>
-        </div>
+    <div class="location-item" *ngFor="let item of Locations | async">
+        <app-list-item [locationItem]="item"></app-list-item>
     </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddressType } from 'src/app/shared/models/enums/_addressType.enum';
 import { Location } from 'src/app/shared/models/location.model';
 
 @Component({
@@ -15,4 +16,11 @@ export class ListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getAddressType(type: AddressType): string{
+    switch(type){
+      case AddressType.physical: return "Only physical address";
+      case AddressType.postal: return "Only postal address";
+      case AddressType.both: return "Both physical and postal address";
+    }
+  }
 }

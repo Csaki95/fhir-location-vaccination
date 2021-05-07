@@ -23,8 +23,14 @@ $on-hover: #4691f3;
     box-sizing: border-box;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+    height: 100vh;
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -46,6 +52,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     align-items: center;
     justify-content: center;
     height: stretch;
+}
+
+.spacer{
+    flex: 1 1 auto;
 }
 
 .no-decor{

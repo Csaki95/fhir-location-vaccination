@@ -1,11 +1,135 @@
-<mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
+<mat-expansion-panel class="container">
+    <mat-expansion-panel-header fxLayout="row wrap">
+        <mat-panel-title fxFlex="50%">
             {{locationItem.name}}
         </mat-panel-title>
-        <mat-panel-description>
+        <mat-panel-description fxFlex="50%">
             {{locationItem.address.city}}
         </mat-panel-description>
     </mat-expansion-panel-header>
-    
+    <div class="item-details" fxLayout="row wrap" fxLayout.xs="column wrap">
+        <div class="details" *ngIf="locationItem.status" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Status:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.status}}</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="details" *ngIf="locationItem.operationalStatus" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Operational Status:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.operationalStatus}}</p>
+            </div>
+        </div>
+        <div class="details" *ngIf="locationItem.name" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Location Name:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.name}}</p>
+            </div>
+        </div>
+        <div class="details" *ngIf="locationItem.description" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Description:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.description}}</p>
+            </div>
+        </div>
+        <div class="details" *ngIf="locationItem.type" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Location type:</label>
+            </div>
+            <div fxLayout="column" fxFlex="75%" fxFlex.xs="50%">
+                <div class="item-spacing" *ngFor="let item of locationItem.type">
+                    <p>{{item | replace : '[_]' : ' '}} </p>
+                </div>
+            </div>            
+        </div>
+        <mat-divider></mat-divider>
+        <div class="details" *ngIf="locationItem.telekom" fxFlex="100%">
+            <div *ngIf="locationItem.telekom.contactValue" fxFlex="25%" fxFlex.xs="50%">
+                <label>Contact:</label>
+            </div>            
+            <div fxLayout="column" fxFlex="75%" fxFlex.xs=100%>
+                <div class="item-spacing" *ngIf="locationItem.telekom.contactSystem" fxFlex="100%">
+                    <p>{{locationItem.telekom.contactSystem}}</p>
+                </div>
+                <div class="item-spacing" *ngIf="locationItem.telekom.contactValue" fxFlex="100%">
+                    <p>{{locationItem.telekom.contactValue}}</p>
+                </div>
+                <div *ngIf="locationItem.telekom.contactUse" fxFlex="100%">
+                    <p>{{locationItem.telekom.contactUse + " contact"}}</p>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="details" *ngIf="locationItem.address" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Address:</label>
+            </div>            
+            <div fxLayout="column" fxFlex="75%" fxFlex.xs=100%>
+                <div class="item-spacing" *ngIf="locationItem.address.use" fxFlex="100%">
+                    <p>{{locationItem.address.use + " address"}}</p>
+                </div>
+                <div class="item-spacing" *ngIf="locationItem.address.type" fxFlex="100%">
+                    <p>{{getAddressType(locationItem.address.type)}}</p>
+                </div>
+                <div fxFlex="100%">
+                    <p>{{locationItem.address.postalCode + " " + locationItem.address.city}}</p>
+                </div>
+                <div fxFlex="100%">
+                    <p>{{locationItem.address.line}}</p>
+                </div>
+                <div fxFlex="100%">
+                    <p>{{locationItem.address.country}}</p>
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="details" *ngIf="locationItem.physicalType" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Physical Type:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.physicalType}}</p>
+            </div>
+        </div>
+        <div class="details" *ngIf="locationItem.managingOrganization" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>Managing Organization:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.managingOrganization}}</p>
+            </div>
+        </div>
+        <div class="details" *ngIf="locationItem.partOf" fxFlex="100%">
+            <div fxFlex="25%" fxFlex.xs="50%">
+                <label>partOf:</label>
+            </div>
+            <div fxFlex="75%" fxFlex.xs="50%">
+                <p>{{locationItem.partOf}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="centering">
+        <button
+            mat-flat-button
+            type="submit"
+            class="delete-button">
+            Delete
+        </button>
+        <span class="spacer"></span>
+        <button
+            mat-flat-button
+            type="submit"
+            class="edit-button">
+            Edit
+        </button>
+    </div>
 </mat-expansion-panel>

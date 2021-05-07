@@ -16,6 +16,9 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ReplacePipe } from './pipes/replace.pipe';
+import { MatDividerModule } from '@angular/material/divider';
 
 const modules: any[] = [
   MatCardModule,
@@ -34,11 +37,16 @@ const modules: any[] = [
   MatDatepickerModule,
   MatChipsModule,
   MatIconModule,
+  MatGridListModule,
+  MatDividerModule
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ReplacePipe
+  ],
   imports: [CommonModule, ...modules],
-  exports: [...modules],
+  exports: [ReplacePipe,
+            ...modules],
 })
 export class MaterialModule {}

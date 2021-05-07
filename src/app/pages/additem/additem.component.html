@@ -20,7 +20,7 @@
 							formControlName="status" aria-label="Status of location">
 							<mat-button-toggle class="radio-button" *ngFor="let item of Status |
 								keyvalue"
-								[value]="item.key">{{[item.value]}}</mat-button-toggle>
+								[value]="item.value">{{[item.value]}}</mat-button-toggle>
 						</mat-button-toggle-group>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Operational status</mat-label>
@@ -33,7 +33,7 @@
 						</mat-form-field>
 					</div>
 					<div class="wrapper">
-						<h3>Naming:</h3>
+						<h3>Facility:</h3>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Name</mat-label>
 							<input matInput
@@ -51,9 +51,6 @@
 								attr.aria-label="Description"
 								placeholder="Description of the facility">
 						</mat-form-field>
-					</div>
-					<div class="wrapper">
-						<h3>Contact:</h3>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Facility type</mat-label>
 							<mat-select formControlName="type" multiple="true">
@@ -67,6 +64,9 @@
 								</mat-option>
 							</mat-select>
 						</mat-form-field>
+					</div>
+					<div class="wrapper">
+						<h3>Contact:</h3>
 						<div formGroupName="telekom">
 							<mat-form-field class="full-width top-spacing">
 								<mat-label>Contact type</mat-label>
@@ -121,31 +121,27 @@
 								required="true">
 							</textarea>
 						</mat-form-field>
-						<table class="full-width top-spacing" cellspacing="0">
-							<tr>
-								<td>
-									<mat-form-field class="full-width">
-										<mat-label>City</mat-label>
-										<input
-											matInput
-											formControlName="city"
-											placeholder="Ex. San Francisco"
-											required="true"/>
-									</mat-form-field>
-								</td>
-								<td>
-									<mat-form-field class="full-width">
-										<mat-label>Postal Code</mat-label>
-										<input
-											matInput
-											type="number"
-											formControlName="postalCode"
-											placeholder="Ex. 6710"
-											required="true"/>
-									</mat-form-field>
-								</td>
-							</tr>
-						</table>
+						<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start end">
+							<mat-form-field class="top-spacing" fxFlex="calc(75%-10px)" fxFlex.xs="100%">
+								<mat-label>City</mat-label>
+								<input
+									matInput
+									formControlName="city"
+									placeholder="Ex. San Francisco"
+									required="true"
+									fxFlexFill/>
+							</mat-form-field>
+							<mat-form-field class="top-spacing" fxFlex="calc(100%-75%)" fxFlex.xs="100%">
+								<mat-label>Postal Code</mat-label>
+								<input
+									matInput
+									type="number"
+									formControlName="postalCode"
+									placeholder="Ex. 6710"
+									required="true"
+									fxFlexFill/>
+							</mat-form-field>
+						</div>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Country</mat-label>
 							<input matInput formControlName="country" required="true"/>

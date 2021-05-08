@@ -1,13 +1,13 @@
 <mat-expansion-panel class="container">
     <mat-expansion-panel-header fxLayout="row wrap">
-        <mat-panel-title fxFlex="50%">
+        <mat-panel-title fxFlex="70%">
             {{locationItem.name}}
         </mat-panel-title>
-        <mat-panel-description fxFlex="50%">
+        <mat-panel-description fxFlex="30%">
             {{locationItem.address.city}}
         </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="item-details" fxLayout="row wrap" fxLayout.xs="column wrap">
+    <div class="item-details" fxLayout="row wrap">
         <div class="details" *ngIf="locationItem.status" fxFlex="100%">
             <div fxFlex="25%" fxFlex.xs="50%">
                 <label>Status:</label>
@@ -17,7 +17,8 @@
             </div>
         </div>
         <mat-divider></mat-divider>
-        <div class="details" *ngIf="locationItem.operationalStatus" fxFlex="100%">
+        <div class="details" *ngIf="locationItem.operationalStatus"
+            fxFlex="100%">
             <div fxFlex="25%" fxFlex.xs="50%">
                 <label>Operational Status:</label>
             </div>
@@ -46,21 +47,25 @@
                 <label>Location type:</label>
             </div>
             <div fxLayout="column" fxFlex="75%" fxFlex.xs="50%">
-                <div class="item-spacing" *ngFor="let item of locationItem.type">
+                <div class="item-spacing" *ngFor="let item of
+                    locationItem.type">
                     <p>{{item | replace : '[_]' : ' '}} </p>
                 </div>
-            </div>            
+            </div>
         </div>
         <mat-divider></mat-divider>
         <div class="details" *ngIf="locationItem.telekom" fxFlex="100%">
-            <div *ngIf="locationItem.telekom.contactValue" fxFlex="25%" fxFlex.xs="50%">
+            <div *ngIf="locationItem.telekom.contactValue" fxFlex="25%"
+                fxFlex.xs="50%">
                 <label>Contact:</label>
-            </div>            
+            </div>
             <div fxLayout="column" fxFlex="75%" fxFlex.xs=100%>
-                <div class="item-spacing" *ngIf="locationItem.telekom.contactSystem" fxFlex="100%">
+                <div class="item-spacing"
+                    *ngIf="locationItem.telekom.contactSystem" fxFlex="100%">
                     <p>{{locationItem.telekom.contactSystem}}</p>
                 </div>
-                <div class="item-spacing" *ngIf="locationItem.telekom.contactValue" fxFlex="100%">
+                <div class="item-spacing"
+                    *ngIf="locationItem.telekom.contactValue" fxFlex="100%">
                     <p>{{locationItem.telekom.contactValue}}</p>
                 </div>
                 <div *ngIf="locationItem.telekom.contactUse" fxFlex="100%">
@@ -72,16 +77,19 @@
         <div class="details" *ngIf="locationItem.address" fxFlex="100%">
             <div fxFlex="25%" fxFlex.xs="50%">
                 <label>Address:</label>
-            </div>            
+            </div>
             <div fxLayout="column" fxFlex="75%" fxFlex.xs=100%>
-                <div class="item-spacing" *ngIf="locationItem.address.use" fxFlex="100%">
+                <div class="item-spacing" *ngIf="locationItem.address.use"
+                    fxFlex="100%">
                     <p>{{locationItem.address.use + " address"}}</p>
                 </div>
-                <div class="item-spacing" *ngIf="locationItem.address.type" fxFlex="100%">
+                <div class="item-spacing" *ngIf="locationItem.address.type"
+                    fxFlex="100%">
                     <p>{{getAddressType(locationItem.address.type)}}</p>
                 </div>
                 <div fxFlex="100%">
-                    <p>{{locationItem.address.postalCode + " " + locationItem.address.city}}</p>
+                    <p>{{locationItem.address.postalCode + " " +
+                        locationItem.address.city}}</p>
                 </div>
                 <div fxFlex="100%">
                     <p>{{locationItem.address.line}}</p>
@@ -100,7 +108,8 @@
                 <p>{{locationItem.physicalType}}</p>
             </div>
         </div>
-        <div class="details" *ngIf="locationItem.managingOrganization" fxFlex="100%">
+        <div class="details" *ngIf="locationItem.managingOrganization"
+            fxFlex="100%">
             <div fxFlex="25%" fxFlex.xs="50%">
                 <label>Managing Organization:</label>
             </div>

@@ -7,7 +7,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -19,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ReplacePipe } from './pipes/replace.pipe';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 const modules: any[] = [
   MatCardModule,
@@ -28,7 +29,6 @@ const modules: any[] = [
   MatSidenavModule,
   MatListModule,
   MatMenuModule,
-  MatRadioModule,
   MatButtonToggleModule,
   MatSelectModule,
   MatAutocompleteModule,
@@ -38,7 +38,8 @@ const modules: any[] = [
   MatChipsModule,
   MatIconModule,
   MatGridListModule,
-  MatDividerModule
+  MatDividerModule,
+  MatDialogModule
 ];
 
 @NgModule({

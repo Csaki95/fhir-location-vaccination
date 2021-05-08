@@ -1,38 +1,76 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, CollectionReference, Query } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  CollectionReference,
+  Query,
+} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
+/**
+ * General reusable CRUD service
+ */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CrudService <T extends { id?: string }> {
+export class CrudService<T extends { id?: string }> {
+  constructor(private afs: AngularFirestore) {}
 
-  constructor(private afs: AngularFirestore) { }
-
-  async add(collectionName: string, data: T, id?: string): Promise<string>{
+  /**
+   * Async add function to the firestore database
+   * @param collectionName name of the firestore collection
+   * @param data the stored object
+   * @param id the id of that object if it has one
+   * @returns the id of the object for debugging purposes
+   */
+  async add(collectionName: string, data: T, id?: string): Promise<string> {
     const uid = id ? id : this.afs.createId();
     data.id = uid;
     await this.afs.collection(collectionName).doc(uid).set(data);
     return uid;
   }
 
+  /**
+   * Getter for firestore collection
+   * @param collectionName name of the firestore collection
+   * @param orderBy the parameter the list gets ordered by
+   * @returns an Observable array of the stored object type
+   */
   get(collectionName: string, orderBy: string): Observable<T[]> {
-    return this.afs.collection(collectionName, ref => {
-      let query: CollectionReference | Query = ref;
-      query = query.orderBy(orderBy, 'asc');
-      return query;
-    }).valueChanges() as Observable<T[]>;
+    return this.afs
+      .collection(collectionName, (ref) => {
+        let query: CollectionReference | Query = ref;
+        query = query.orderBy(orderBy, 'asc');
+        return query;
+      })
+      .valueChanges() as Observable<T[]>;
   }
 
+  /**
+   * Gets a stored object by ID
+   * @param collectionName name of the firestore collection
+   * @param id the id of the object
+   * @returns an Observable<any> containing the object
+   */
   getById(collectionName: string, id: string): Observable<any> {
     return this.afs.collection(collectionName).doc(id).valueChanges();
   }
 
-  update(collectionName: string, id: string, data: T): Promise<void>{
+  /**
+   * Updates the firestore object on ID with the data object
+   * @param collectionName name of the firestore collection
+   * @param id the id of the object
+   * @param data an object with the updated parameters
+   */
+  update(collectionName: string, id: string, data: T): Promise<void> {
     return this.afs.collection(collectionName).doc(id).update(data);
   }
 
-  delete(collectionName: string, id: string): Promise<void>{
+  /**
+   * Deletes an object from firestore by ID
+   * @param collectionName name of the firestore collection
+   * @param id the id of the object
+   */
+  delete(collectionName: string, id: string): Promise<void> {
     return this.afs.collection(collectionName).doc(id).delete();
   }
 }

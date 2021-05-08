@@ -6,13 +6,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [ ListItemComponent ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FlexLayoutModule,
-    RouterModule
-  ],
-  exports: [ ListItemComponent ]
+  declarations: [ListItemComponent],
+  imports: [CommonModule, MaterialModule, FlexLayoutModule, RouterModule],
+  exports: [ListItemComponent],
 })
-export class ListItemModule { }
+export class ListItemModule {}

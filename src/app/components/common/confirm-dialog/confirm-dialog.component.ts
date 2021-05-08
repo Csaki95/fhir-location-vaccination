@@ -1,24 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
-import { AuthService } from 'src/app/auth/auth.service';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+/**
+ * ConfirmDialogComponent for confirmation dialog
+ *  when Yes button is pressed it returns true
+ */
 @Component({
   selector: 'app-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
 })
-export class ConfirmDialogComponent implements OnInit {
+export class ConfirmDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-    private auth: AuthService
-  ) {}
-
-  ngOnInit(): void {}
-
-  onYesClick(): void {
-    this.dialogRef.close();
-    this.auth.logOut();
-  }
+    @Inject(MAT_DIALOG_DATA) public data: {title: string} ) {}
 
   onNoClick(): void {
     this.dialogRef.close();

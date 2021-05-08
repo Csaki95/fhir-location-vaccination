@@ -11,25 +11,20 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    component: RegistrationComponent
-  }
-]
-
+    component: RegistrationComponent,
+  },
+];
 
 @NgModule({
-  declarations: [
-    RegistrationComponent
-  ],
+  declarations: [RegistrationComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
     FooterModule,
     BackgroundModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
-  exports: [
-    RegistrationComponent
-  ]
+  exports: [RegistrationComponent],
 })
-export class RegistrationModule { }
+export class RegistrationModule {}

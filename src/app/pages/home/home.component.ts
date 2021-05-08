@@ -1,47 +1,30 @@
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CrudService } from 'src/app/services/crud.service';
+import { ResponsiveService } from 'src/app/services/responsive.service';
 import { Location } from 'src/app/shared/models/location.model';
 
+/**
+ * Home page lists current locations with listItem module
+ */
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  isMobile: boolean = false;
+  isMobile!: boolean;
   Locations: Observable<Location[]> | null = null;
 
   constructor(
-    public breakpointObserver: BreakpointObserver,
-    private router: Router,
+    private responsiveService: ResponsiveService,
     private service: CrudService<Location>
-  ) {}
-
-  ngOnInit(): void {
-    /**
-     * Subscribe to location changes
-     */
-    this.Locations = this.service.get('Locations', 'name');
-
-    /**
-     * Subscribe to breakpointObserver
-     * under 900px we switch to Mobile view
-     */
-    this.breakpointObserver
-      .observe(['(min-width: 900px)'])
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.isMobile = false;
-        } else {
-          this.isMobile = true;
-        }
-      });
+  ) {
+    this.isMobile = responsiveService.getIsMobile();
   }
 
-  openAddPage() {
-    this.router.navigate(['/add']);
+  ngOnInit(): void {
+    // Subscribe to location changes
+    this.Locations = this.service.get('Locations', 'name');
   }
 }

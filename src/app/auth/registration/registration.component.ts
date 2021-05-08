@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth.service';
 
@@ -11,37 +15,51 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
+  form: FormGroup;
+
   // Error message
   authError: any;
   private errorSub?: Subscription;
 
-  form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.minLength(6), Validators.maxLength(100), Validators.required])
-  })
-
-  constructor(private auth: AuthService) { }
-
-  // Subscribe to the error message
-  ngOnInit(): void {
-    this.errorSub = this.auth.eventAuthError$.subscribe( data => {
-      this.authError = data;
-    })
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+    this.form = this.fb.group({
+      email: [
+        null,
+        Validators.compose([Validators.required, Validators.email]),
+      ],
+      password: [
+        null,
+        Validators.compose([
+          Validators.minLength(6),
+          Validators.maxLength(100),
+          Validators.required,
+        ]),
+      ],
+    });
   }
 
-  // Clear current error (so it doesn't persist in auth service), and unsubscribe
+  ngOnInit(): void {
+    // Subscribe to the error message
+    this.errorSub = this.auth.eventAuthError$.subscribe((data) => {
+      this.authError = data;
+    });
+  }
+
   ngOnDestroy(): void {
+    // Clear current error (so it doesn't persist in auth service), and unsubscribe
     this.auth.clearError();
     this.errorSub?.unsubscribe();
   }
 
-  
-  onSignUp(){
-    this.auth.createUser(this.form.get('email')?.value, this.form.get('password')?.value)
-    if (this.authError)
-      this.form.reset();
+  // On signup send email and password to auth service
+  onSignUp() {
+    this.auth.createUser(
+      this.form.get('email')?.value,
+      this.form.get('password')?.value
+    );
+    if (this.authError) this.form.reset();
   }
 }

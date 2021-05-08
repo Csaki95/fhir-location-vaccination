@@ -5,19 +5,14 @@ import { MaterialModule } from 'src/app/shared/material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfirmDialogModule } from '../confirm-dialog/confirm-dialog.module';
 
-
 @NgModule({
-  declarations: [
-    NavbarComponent
-  ],
+  declarations: [NavbarComponent],
   imports: [
     CommonModule,
     MaterialModule,
     FontAwesomeModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
   ],
-  exports: [
-    NavbarComponent
-  ]
+  exports: [NavbarComponent],
 })
-export class NavbarModule { }
+export class NavbarModule {}

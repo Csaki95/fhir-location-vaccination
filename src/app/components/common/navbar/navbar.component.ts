@@ -1,14 +1,24 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import {
   faPlus,
   faSignOutAlt,
   faBars,
 } from '@fortawesome/free-solid-svg-icons';
-import { EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { ResponsiveService } from 'src/app/services/responsive.service';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
+/**
+ * Responsive Navbar component
+ *  when desktop full top navbar
+ *  when mobile bottom navbar that expands upwards
+ *
+ * On "add new" navigate to the add form
+ * On "logout" open confirmation dialog, if accepted log out with authservice
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -23,12 +33,16 @@ export class NavbarComponent {
 
   // Responsible for view change
   isOpen: boolean = false;
-  @Input() isMobile: boolean = false;
+  isMobile!: boolean;
 
-  // Emitter to Home for opening add new item panel
-  @Output() addNewItem: EventEmitter<any> = new EventEmitter();
-
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private router: Router,
+    private responsiveService: ResponsiveService,
+    private auth: AuthService
+  ) {
+    this.isMobile = responsiveService.getIsMobile();
+  }
 
   openMenu() {
     this.isOpen = !this.isOpen;
@@ -37,10 +51,15 @@ export class NavbarComponent {
   logOut() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
+      data: { title: 'Are you sure?' },
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res) this.auth.logOut();
     });
   }
 
   addNew() {
-    this.addNewItem.emit();
+    this.router.navigate(['/add']);
   }
 }

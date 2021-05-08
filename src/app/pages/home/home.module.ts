@@ -20,8 +20,8 @@ export const routes: Routes = [
     NavbarModule,
     BackgroundModule,
     RouterModule.forChild(routes),
-    ListItemModule
+    ListItemModule,
   ],
-  exports: [HomeComponent],
+  exports: [HomeComponent]
 })
 export class HomeModule {}

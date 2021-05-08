@@ -27,7 +27,8 @@ export class ListItemComponent implements OnInit {
   }
 
   edit(){
-
+    if (this.locationItem.id)
+      this.router.navigate(['edit'], { queryParams: {id: this.locationItem.id} });
   }
 
   delete(){

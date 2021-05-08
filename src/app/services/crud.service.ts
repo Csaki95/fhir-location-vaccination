@@ -24,6 +24,10 @@ export class CrudService <T extends { id?: string }> {
     }).valueChanges() as Observable<T[]>;
   }
 
+  getById(collectionName: string, id: string): Observable<any> {
+    return this.afs.collection(collectionName).doc(id).valueChanges();
+  }
+
   update(collectionName: string, id: string, data: T): Promise<void>{
     return this.afs.collection(collectionName).doc(id).update(data);
   }

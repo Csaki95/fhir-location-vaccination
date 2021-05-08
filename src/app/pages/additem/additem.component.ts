@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { Subject, ReplaySubject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -30,6 +31,9 @@ export class AdditemComponent implements OnInit {
   searchFilterControl: FormControl;
   formOutput: any;
 
+  // If the current page is used as "Add new", or "Update"
+  isUpdate!: boolean;
+
   // Typedefs
   Status = Status;
   OperationalStatus = OperationalStatus;
@@ -50,7 +54,8 @@ export class AdditemComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private service: CrudService<Location>
+    private service: CrudService<Location>,
+    private activeRoute: ActivatedRoute
   ) {
     // Main form
     this.addForm = this.fb.group({
@@ -84,11 +89,13 @@ export class AdditemComponent implements OnInit {
       managingOrganization: [null],
       partOf: [null],
     });
+
     // Selectsearch field
     this.searchFilterControl = this.fb.control(null);
   }
 
   ngOnInit(): void {
+    this.editCheck();
     this.enumToArray();
 
     // Search value changes
@@ -112,6 +119,18 @@ export class AdditemComponent implements OnInit {
   // Unsub from searchFilterControl
   ngOnDestroy(): void {
     this._onDestroy.unsubscribe();
+  }
+
+  editCheck(){
+    if(this.activeRoute.snapshot.queryParams['id']){
+      this.isUpdate = true;
+      this.service.getById('Locations' , this.activeRoute.snapshot.queryParams['id'])
+        .subscribe( locationItem => {
+          this.addForm.patchValue(locationItem as Location);
+        })
+    } else {
+      this.isUpdate = false;
+    }
   }
 
   getKeys(obj: any) {
@@ -139,6 +158,10 @@ export class AdditemComponent implements OnInit {
 
   submitForm(): void {
     let locationItem = this.addForm.value as Location;
-    this.service.add('Locations',locationItem);
+    if(this.isUpdate){
+      this.service.update('Locations', this.activeRoute.snapshot.queryParams['id'], locationItem);
+    } else {
+      this.service.add('Locations', locationItem);
+    }
   }
 }

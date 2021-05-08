@@ -29,6 +29,12 @@ const routes: Routes = [
     data: { authGuardPipe: redirectUnauthorizedToLogin }
   },
   {
+    path: 'edit',
+    loadChildren: async () => (await import('./pages/additem/additem.module')).AdditemModule,
+    canActivate: [AngularFireAuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin }
+  },
+  {
     path: 'add',
     loadChildren: async () => (await import('./pages/additem/additem.module')).AdditemModule,
     canActivate: [AngularFireAuthGuard],

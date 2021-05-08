@@ -7,7 +7,8 @@
 					class="angular-icon"
 					matCardAvatar
 					[icon]="angularIcon"></fa-icon>
-				<mat-card-title class="title">Add new</mat-card-title>
+				<mat-card-title *ngIf="isUpdate" class="title">Update Location</mat-card-title>
+				<mat-card-title *ngIf="!isUpdate" class="title">Add new</mat-card-title>
 			</mat-card-header>
 			<mat-card-header class="centering">
 				<mat-card-subtitle class="error centering"></mat-card-subtitle>

@@ -1,10 +1,10 @@
 <app-navbar></app-navbar>
 <app-background *ngIf="isMobile"></app-background>
-<div class="home-container" [ngClass]="isMobile ? 'bottom' : 'top'">
+<div class="home-container" [ngClass]="isMobile ? 'bottom' : 'top'" #homeWrapper>
     <div class="location-item" *ngFor="let item of Locations | async">
         <app-list-item [locationItem]="item"></app-list-item>
     </div>
 </div>
-<ng-template class="centering" #empty>
+<ng-template class="centering" *ngIf="homeWrapper.children.length == 0">
     <h2>Nothing here</h2>
 </ng-template>

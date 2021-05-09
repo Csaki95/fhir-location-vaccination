@@ -5,14 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -27,14 +25,12 @@ const modules: any[] = [
   MatInputModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatListModule,
   MatMenuModule,
   MatButtonToggleModule,
   MatSelectModule,
   MatAutocompleteModule,
   MatExpansionModule,
   NgxMatSelectSearchModule,
-  MatDatepickerModule,
   MatChipsModule,
   MatIconModule,
   MatGridListModule,

@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/fhir-location-vaccination",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   // Reference to the angular icon, and error message
   angularIcon = faAngular;
-  authError: any;
+  authError!: string;
   private errorSub?: Subscription;
 
   constructor(private auth: AuthService, private fb: FormBuilder) {

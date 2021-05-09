@@ -20,6 +20,10 @@ import { Status } from 'src/app/shared/models/enums/_status.enum';
 import { Type } from 'src/app/shared/models/enums/_type.enum';
 import { Location } from 'src/app/shared/models/location.model';
 
+/**
+ * Add form component
+ *  depending on how its called "add", or "edit" it will load the recieved data to the form
+ */
 @Component({
   selector: 'app-additem',
   templateUrl: './additem.component.html',
@@ -29,7 +33,6 @@ export class AdditemComponent implements OnInit {
   angularIcon = faAngular;
   addForm: FormGroup;
   searchFilterControl: FormControl;
-  formOutput: any;
 
   // If the current page is used as "Add new", or "Update"
   isUpdate!: boolean;

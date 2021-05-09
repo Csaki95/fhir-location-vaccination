@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 /**
  * Responsive Navbar component
@@ -34,14 +35,25 @@ export class NavbarComponent {
   // Responsible for view change
   isOpen: boolean = false;
   isMobile!: boolean;
+  private mobileSub?: Subscription;
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private responsiveService: ResponsiveService,
     private auth: AuthService
-  ) {
-    this.isMobile = responsiveService.getIsMobile();
+  ) { }
+
+  ngOnInit(): void {
+    // Subscribe to the screen size check
+    this.mobileSub = this.responsiveService.isMobile$.subscribe((data) => {
+      this.isMobile = data;
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsub the screen size check
+    this.mobileSub?.unsubscribe();
   }
 
   openMenu() {

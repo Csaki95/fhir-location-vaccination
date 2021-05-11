@@ -5,6 +5,10 @@ import { PhysicalType } from "./enums/_physical-type.enum";
 import { Address } from "./interfaces/_address.interface";
 import { ContactPoint } from "./interfaces/_contactPoint.interface";
 
+/**
+ * Location interface created based on the FHIR Location type
+ * http://www.hl7.org/fhir/location.html
+ */
 export interface Location {
     id?: string,
     status?: Status,

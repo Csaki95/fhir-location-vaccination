@@ -18,7 +18,6 @@ import { ReplacePipe } from './pipes/replace.pipe';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
 const modules: any[] = [
   MatCardModule,
   MatButtonModule,
@@ -35,15 +34,12 @@ const modules: any[] = [
   MatIconModule,
   MatGridListModule,
   MatDividerModule,
-  MatDialogModule
+  MatDialogModule,
 ];
 
 @NgModule({
-  declarations: [
-    ReplacePipe
-  ],
+  declarations: [ReplacePipe],
   imports: [CommonModule, ...modules],
-  exports: [ReplacePipe,
-            ...modules],
+  exports: [ReplacePipe, ...modules],
 })
 export class MaterialModule {}

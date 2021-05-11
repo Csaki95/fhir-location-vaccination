@@ -26,7 +26,7 @@ export const routes: Routes = [
     FormsModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   exports: [AdditemComponent],
 })

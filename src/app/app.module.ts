@@ -18,9 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AdditemModule } from './pages/additem/additem.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -36,9 +34,9 @@ import { AdditemModule } from './pages/additem/additem.module';
     FontAwesomeModule,
     MatDialogModule,
     AdditemModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [ ],
-  bootstrap: [ AppComponent ]
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

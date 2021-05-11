@@ -1,10 +1,29 @@
 <app-navbar></app-navbar>
 <app-background *ngIf="isMobile"></app-background>
 <div class="home-container" [ngClass]="isMobile ? 'bottom' : 'top'">
-    <div class="location-item" *ngFor="let item of Locations | async">
+    <mat-card class="search-bar" *ngIf="Locations">
+        <form class="centering" [formGroup]="search" fxLayout="row wrap"
+            fxLayoutGap="5%">
+            <mat-form-field class="full-width" fxFlex="60%">
+                <mat-label>Search</mat-label>
+                <input matInput
+                    type="text"
+                    formControlName="searchInput"
+                    attr.aria-label="Search Input"
+                    autocomplete="off">
+            </mat-form-field>
+            <mat-button-toggle-group class="radio-container centering"
+                formControlName="type" aria-label="Status of location"
+                fxFlex="35%">
+                <mat-button-toggle class="radio-button" value="name">Name</mat-button-toggle>
+                <mat-button-toggle class="radio-button" value="address.city">City</mat-button-toggle>
+            </mat-button-toggle-group>
+        </form>
+    </mat-card>
+    <div class="location-item" *ngFor="let item of Locations">
         <app-list-item [locationItem]="item"></app-list-item>
     </div>
-    <div class="empty centering" *ngIf="isNull">
+    <div class="empty centering" *ngIf="Locations?.length == 0">
         <h3>Nothing here...</h3>
     </div>
 </div>

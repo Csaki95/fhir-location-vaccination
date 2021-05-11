@@ -1,5 +1,14 @@
 <mat-expansion-panel class="container">
-    <mat-expansion-panel-header fxLayout="row wrap">
+    <mat-expansion-panel-header *ngIf="!isMobile" fxLayout="row wrap">
+        <mat-panel-title fxFlex="70%">
+            {{locationItem.name}}
+        </mat-panel-title>
+        <mat-panel-description fxFlex="30%">
+            {{locationItem.address.city}}
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-expansion-panel-header *ngIf="isMobile" [collapsedHeight]="'8vh'"
+        fxLayout="row wrap">
         <mat-panel-title fxFlex="70%">
             {{locationItem.name}}
         </mat-panel-title>
@@ -127,6 +136,14 @@
         </div>
     </div>
     <div class="centering">
+        <button
+            mat-flat-button
+            class="nav-button"
+            (click)="openNav()">
+            Navigate
+        </button>
+    </div>
+    <div class="centering top-spacing">
         <button
             mat-flat-button
             class="delete-button"

@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class ResponsiveService {
+export class ResponsiveService{
   private isMobile = new BehaviorSubject<boolean>(false);
   isMobile$ = this.isMobile.asObservable();
 

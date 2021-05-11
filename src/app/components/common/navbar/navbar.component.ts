@@ -32,34 +32,36 @@ export class NavbarComponent {
   signOutIcon = faSignOutAlt;
   menuIcon = faBars;
 
-  // Responsible for view change
+  // Stores if menu is open or not
   isOpen: boolean = false;
+  // Resposivity breakpoint, true if we switch to mobile page
   isMobile!: boolean;
-  private mobileSub?: Subscription;
+  // Array for subscription handling
+  private _subscriptions: Subscription[] = [];
 
   constructor(
     public dialog: MatDialog,
     private router: Router,
     private responsiveService: ResponsiveService,
     private auth: AuthService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    // Subscribe to the screen size check
-    this.mobileSub = this.responsiveService.isMobile$.subscribe((data) => {
-      this.isMobile = data;
-    });
+    this.screenSizeCheck();
   }
 
   ngOnDestroy(): void {
-    // Unsub the screen size check
-    this.mobileSub?.unsubscribe();
+    // Unsubscribe every subscription
+    this._subscriptions?.forEach((sub) => sub.unsubscribe());
   }
 
   openMenu() {
     this.isOpen = !this.isOpen;
   }
 
+  /**
+   * Open confirmation dialog if it's returns true logout from the application
+   */
   logOut() {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
@@ -71,7 +73,21 @@ export class NavbarComponent {
     });
   }
 
+  /**
+   * Navigate to the add page
+   */
   addNew() {
     this.router.navigate(['/add']);
+  }
+
+  /**
+   * Subscribe to resposivity breakpoint
+   */
+  screenSizeCheck() {
+    this._subscriptions.push(
+      this.responsiveService.isMobile$.subscribe((data) => {
+        this.isMobile = data;
+      })
+    );
   }
 }

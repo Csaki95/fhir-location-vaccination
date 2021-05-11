@@ -2,7 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 /**
- * ConfirmDialogComponent for confirmation dialog
+ * Confirmation dialog
+ *  Injects a title text when created to allow reusability
  *  when Yes button is pressed it returns true
  */
 @Component({

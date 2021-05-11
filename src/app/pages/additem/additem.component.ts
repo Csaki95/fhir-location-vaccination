@@ -30,7 +30,10 @@ import { Location } from 'src/app/shared/models/location.model';
   styleUrls: ['./additem.component.scss'],
 })
 export class AdditemComponent implements OnInit {
+  // Fortawesome icon reference
   angularIcon = faAngular;
+
+  // Form declarations
   addForm: FormGroup;
   searchFilterControl: FormControl;
 
@@ -101,7 +104,7 @@ export class AdditemComponent implements OnInit {
     this.editCheck();
     this.enumToArray();
 
-    // Search value changes
+    // On value changes in search call filter
     this.searchFilterControl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => {
@@ -109,37 +112,44 @@ export class AdditemComponent implements OnInit {
       });
   }
 
-  ngAfterViewInit(): void {
-    this.changeDetectorRef.detectChanges();
-
-    this.addForm.valueChanges.subscribe({
-      next: (value) => {
-        console.log(this.addForm.value);
-      },
-    });
-  }
-
-  // Unsub from searchFilterControl
   ngOnDestroy(): void {
+    // Unsub from searchFilterControl
     this._onDestroy.unsubscribe();
   }
 
-  editCheck(){
-    if(this.activeRoute.snapshot.queryParams['id']){
+  /**
+   * Check if Component was opened as add, or edit
+   *  if it's opened as edit:
+   *    - set isUpdate for UI changes
+   *    - get the Location Object by the id
+   *    - load the object into the form
+   */
+  editCheck() {
+    if (this.activeRoute.snapshot.queryParams['id']) {
       this.isUpdate = true;
-      this.service.getById('Locations' , this.activeRoute.snapshot.queryParams['id'])
-        .subscribe( locationItem => {
+      this.service
+        .getById('Locations', this.activeRoute.snapshot.queryParams['id'])
+        .subscribe((locationItem) => {
           this.addForm.patchValue(locationItem as Location);
-        })
+        });
     } else {
       this.isUpdate = false;
     }
   }
 
+  /**
+   * Returns values of the Object type passed as parameter
+   * @param obj passed Object typedef
+   * @returns the values as an array
+   */
   getKeys(obj: any) {
     return Object.values(obj);
   }
 
+  /**
+   * Creates an array from the Enum
+   * Then loads the array into the filtered Array (as initialization)
+   */
   enumToArray() {
     this.enumArray = Object.values(this.Type).filter(
       (x) => typeof x === 'string'
@@ -147,6 +157,11 @@ export class AdditemComponent implements OnInit {
     this.filteredEnum.next(this.enumArray);
   }
 
+  /**
+   * Filters the array values based on the input search term
+   *  For each valuechange in search input filter the starting array into a filtered one
+   *  In the UI only the filtered options will be visible
+   */
   filterEnum() {
     // Get the search keyword
     let search = this.searchFilterControl.value;
@@ -159,10 +174,19 @@ export class AdditemComponent implements OnInit {
     );
   }
 
+  /**
+   * If
+   *  Update  - update the value of object that has the id recieved as parameter
+   *  Add     - add a new object to the collection
+   */
   submitForm(): void {
     let locationItem = this.addForm.value as Location;
-    if(this.isUpdate){
-      this.service.update('Locations', this.activeRoute.snapshot.queryParams['id'], locationItem);
+    if (this.isUpdate) {
+      this.service.update(
+        'Locations',
+        this.activeRoute.snapshot.queryParams['id'],
+        locationItem
+      );
     } else {
       this.service.add('Locations', locationItem);
     }

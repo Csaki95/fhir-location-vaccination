@@ -17,7 +17,7 @@
 				<form [formGroup]="addForm" class="add-form" (ngSubmit)="submitForm()">
 					<div class="wrapper">
 						<h3>Location status:</h3>
-						<mat-button-toggle-group class="button-container full-width"
+						<mat-button-toggle-group class="full-width"
 							formControlName="status" aria-label="Status of location">
 							<mat-button-toggle class="radio-button" *ngFor="let item of Status |
 								keyvalue"
@@ -83,7 +83,8 @@
 									type="text"
 									formControlName="contactValue"
 									attr.aria-label="Actual contact"
-									placeholder="Contact value (email, tel, fax)">
+									placeholder="Contact value (email, tel, fax)"
+									autocomplete="off">
 							</mat-form-field>
 							<mat-form-field class="full-width top-spacing">
 								<mat-label>Contact use</mat-label>
@@ -123,7 +124,8 @@
 							</textarea>
 						</mat-form-field>
 						<div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="start end">
-							<mat-form-field class="top-spacing" fxFlex="calc(75%-10px)" fxFlex.xs="100%">
+							<mat-form-field class="top-spacing" fxFlex="calc(75%-10px)"
+								fxFlex.xs="100%">
 								<mat-label>City</mat-label>
 								<input
 									matInput
@@ -132,7 +134,8 @@
 									required="true"
 									fxFlexFill/>
 							</mat-form-field>
-							<mat-form-field class="top-spacing" fxFlex="calc(100%-75%)" fxFlex.xs="100%">
+							<mat-form-field class="top-spacing" fxFlex="calc(100%-75%)"
+								fxFlex.xs="100%">
 								<mat-label>Postal Code</mat-label>
 								<input
 									matInput
@@ -145,7 +148,7 @@
 						</div>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Country</mat-label>
-							<input matInput formControlName="country" required="true"/>
+							<input matInput formControlName="country" required="true" />
 						</mat-form-field>
 					</div>
 					<div class="wrapper">
@@ -164,7 +167,7 @@
 								matInput
 								type="text"
 								formControlName="managingOrganization"
-								placeholder="Organization name that manages the location"/>
+								placeholder="Organization name that manages the location" />
 						</mat-form-field>
 						<mat-form-field class="full-width top-spacing">
 							<mat-label>Part of</mat-label>
@@ -172,7 +175,7 @@
 								matInput
 								type="text"
 								formControlName="partOf"
-								placeholder="The organization is part of"/>
+								placeholder="The organization is part of" />
 						</mat-form-field>
 					</div>
 					<div class="centering">

@@ -3,6 +3,7 @@
 $primary-button-color: #1c7eff;
 $primary-button-hover: #4998ff;
 $success-button-color: #3eac29;
+$delete-button-color: #dd0000;
 
 $text-light: #fafafa;
 $text-light-hover: #dddddd;
@@ -64,10 +65,6 @@ body {
 
 .full-width{
     width: 100%;
-}
-
-.darken{
-    background: $body-darken;
 }
 
 .top-spacing{

@@ -2,12 +2,24 @@
 
 .home-container{
     margin: 1rem;
-    font-size: 2rem;
     display: flex;
     flex-direction: column;
 
+    .search-bar{
+        padding: 0.5rem;
+
+        .radio-container{
+            height: fit-content;
+
+            .radio-button{
+                width: 100%;
+                font-size: 0.75rem;
+            } 
+        }        
+    }
+
     .location-item{
-        margin-bottom: 1rem;
+        margin-top: 1rem;
     }
 
     .empty{

@@ -30,19 +30,40 @@ export class CrudService<T extends { id?: string }> {
   }
 
   /**
-   * Getter for firestore collection
+   * Getter for firestore collection, if type and search term exists
+   *  only return the values matching it
    * @param collectionName name of the firestore collection
    * @param orderBy the parameter the list gets ordered by
+   * @param type the object parameter we are searching for
+   * @param search the searched value of that parameter
    * @returns an Observable array of the stored object type
    */
-  get(collectionName: string, orderBy: string): Observable<T[]> {
-    return this.afs
-      .collection(collectionName, (ref) => {
-        let query: CollectionReference | Query = ref;
-        query = query.orderBy(orderBy, 'asc');
-        return query;
-      })
-      .valueChanges() as Observable<T[]>;
+  get(
+    collectionName: string,
+    orderBy: string,
+    type?: string,
+    search?: any
+  ): Observable<T[]> {
+    if (type && search) {
+      return this.afs
+        .collection(collectionName, (ref) => {
+          let query: CollectionReference | Query = ref;
+          query = query
+            .where(type, '>=', search)
+            .where(type, '<=', search + '\uf8ff')
+            .orderBy(orderBy, 'asc');
+          return query;
+        })
+        .valueChanges() as Observable<T[]>;
+    } else {
+      return this.afs
+        .collection(collectionName, (ref) => {
+          let query: CollectionReference | Query = ref;
+          query = query.orderBy(orderBy, 'asc');
+          return query;
+        })
+        .valueChanges() as Observable<T[]>;
+    }
   }
 
   /**

@@ -4,6 +4,8 @@ import {
   faPlus,
   faSignOutAlt,
   faBars,
+  faInfo,
+  faHome
 } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
@@ -28,7 +30,9 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent {
   // Fontawesome icons used in the page
   angularIcon = faAngular;
+  homeIcon = faHome;
   addIcon = faPlus;
+  infoIcon = faInfo;
   signOutIcon = faSignOutAlt;
   menuIcon = faBars;
 
@@ -36,6 +40,8 @@ export class NavbarComponent {
   isOpen: boolean = false;
   // Resposivity breakpoint, true if we switch to mobile page
   isMobile!: boolean;
+  // If current route is home
+  isHome!: boolean;
   // Array for subscription handling
   private _subscriptions: Subscription[] = [];
 
@@ -47,6 +53,7 @@ export class NavbarComponent {
   ) {}
 
   ngOnInit(): void {
+    this.isHome = (this.router.url === '/home') ? true : false;
     this.screenSizeCheck();
   }
 
@@ -74,10 +81,24 @@ export class NavbarComponent {
   }
 
   /**
+   * Navigate to home page
+   */
+  home() {
+    this.router.navigate(['/home']);
+  }
+
+  /**
    * Navigate to the add page
    */
   addNew() {
     this.router.navigate(['/add']);
+  }
+
+  /**
+   * Navigate to about page
+   */
+  about() {
+    this.router.navigate(['/about']);
   }
 
   /**

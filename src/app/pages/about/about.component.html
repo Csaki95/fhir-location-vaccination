@@ -1,1 +1,55 @@
-<p>about works!</p>
+<app-navbar></app-navbar>
+<app-background *ngIf="isMobile"></app-background>
+<div class="about-container centering" [ngClass]="isMobile ? 'bottom' : 'top'">
+    <mat-card class="about">
+        <mat-card-header>
+            <mat-card-title>FHIR Location</mat-card-title>
+            <mat-card-subtitle>Angular 11 application</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="top-spacing">
+            <p>Based on the following FHIR Location standard:</p>
+            <div class="centering">
+                <img class="image" src="assets\FHIR_location.png">
+            </div>
+            <p class="top-spacing">The app does not implement the full standard
+                only parts that together form a usable application.</p>
+            <p class="top-spacing">The following Interface got implemented in
+                the application:</p>
+            <pre>
+                <code [ngStyle]="{'font-size':isMobile ? '70%' : '100%'}" [innerHTML]="interfaceCode"></code>
+            </pre>
+            <p>
+                Variables with the "?" postfix are optional and types like
+                "Status" or "ContactPoint" are custom sub-types defined in the
+                model.
+                The main purpose of the application is to understand the basics
+                of Web frameworks, Angular, and Firebase.
+            </p>
+            <p>
+                The app only uses built in form validators and firebase error
+                handling, it does not have any other front, or backend
+                validation.
+                The address and information you type in gets saved without
+                checking because of this in case of invalid input Google may
+                return invalid, or no destination at all.
+            </p>
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="footer centering">
+                <button
+                    mat-flat-button
+                    class="about-button"
+                    (click)="reference()">
+                    FHIR reference
+                </button>
+                <span class="spacer"></span>
+                <button
+                    mat-flat-button
+                    class="about-button"
+                    (click)="git()">
+                    GitHub repository
+                </button>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</div>

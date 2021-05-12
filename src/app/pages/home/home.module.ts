@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomeComponent
   },
 ];
 
@@ -26,7 +26,7 @@ export const routes: Routes = [
     ListItemModule,
     MaterialModule,
     FlexLayoutModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   exports: [HomeComponent],
 })

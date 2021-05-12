@@ -46,6 +46,11 @@ const routes: Routes = [
         path: 'add',
         loadChildren: async () =>
           (await import('./pages/additem/additem.module')).AdditemModule
+      },
+      {
+        path: 'about',
+        loadChildren: async () =>
+          (await import('./pages/about/about.module')).AboutModule
       }
     ]
   },

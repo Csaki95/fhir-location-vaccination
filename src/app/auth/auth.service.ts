@@ -60,8 +60,8 @@ export class AuthService {
    * Navigate out to login page THEN
    * sign the user out
    */
-  logOut() {
-    this.router.navigate(['/login']);
-    this.afAuth.signOut();
+  async logOut() {
+    this.router.navigate(['/login'])
+      .then(() => this.afAuth.signOut())
   }
 }

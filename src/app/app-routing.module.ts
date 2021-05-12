@@ -20,34 +20,34 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: async () =>
-      (await import('./auth/login/login.module')).LoginModule,
+      (await import('./auth/login/login.module')).LoginModule
   },
   {
     path: 'register',
     loadChildren: async () =>
-      (await import('./auth/registration/registration.module'))
-        .RegistrationModule,
+      (await import('./auth/registration/registration.module')).RegistrationModule
   },
   {
-    path: 'home',
-    loadChildren: async () =>
-      (await import('./pages/home/home.module')).HomeModule,
+    path: '',
     canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },
-  {
-    path: 'edit',
-    loadChildren: async () =>
-      (await import('./pages/additem/additem.module')).AdditemModule,
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
-  },
-  {
-    path: 'add',
-    loadChildren: async () =>
-      (await import('./pages/additem/additem.module')).AdditemModule,
-    canActivate: [AngularFireAuthGuard],
-    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    children: [
+      {
+        path: 'home',
+        loadChildren: async () =>
+          (await import('./pages/home/home.module')).HomeModule
+      },
+      {
+        path: 'edit',
+        loadChildren: async () =>
+          (await import('./pages/additem/additem.module')).AdditemModule
+      },
+      {
+        path: 'add',
+        loadChildren: async () =>
+          (await import('./pages/additem/additem.module')).AdditemModule
+      }
+    ]
   },
   {
     path: '**',

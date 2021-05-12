@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit {
   ngOnDestroy(): void {
     // Unsub from everything
     this._subscriptions?.forEach((sub) => sub.unsubscribe());
+    this._locationSubscription?.unsubscribe();
   }
 
   /**

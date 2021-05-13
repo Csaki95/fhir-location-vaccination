@@ -1,27 +1,41 @@
-# FhirLocationVaccination
+# Fhir Location Vaccination
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+This project was created using [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+
+Hosted on [https://fhir-location-1daf4.firebaseapp.com/home](https://fhir-location-1daf4.firebaseapp.com/home)
+
+## FHIR Location standard
+
+Based on the [FHIR Location](http://www.hl7.org/fhir/location.html) standard.
+
+![Picture of the standard](src/assets/FHIR_location.png)
+
+The app does not implement the full standard only parts that together form a usable application.
+The following Interface got implemented in the application:
+
+```ts
+export interface Location {
+    id?: string,
+    status?: Status,
+    operationalStatus?: OperationalStatus,
+    name: string,
+    description?: string,
+    type?: Type[],
+    telekom?: ContactPoint,
+    address: Address,
+    physicalType?: PhysicalType,
+    managingOrganization?: string,
+    partOf?: string
+}
+```
+
+Variables with the "?" postfix are optional and types like "Status" or "ContactPoint" are custom sub-types defined in the model.
+The main purpose of the application is to understand the basics of Web frameworks, Angular, and Firebase.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+After cloning the project run `npm i` in the source folder. Run `ng serve` to start the development server. Navigate to `http://localhost:4200/`
 
-## Code scaffolding
+## Hosting
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+The app is hosted on free tier Firebase hosting and gets auto deployed through GitHub Workflow.
